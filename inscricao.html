@@ -31,15 +31,46 @@ button:hover{background:var(--gold2)}
 .ok{display:none;text-align:center;padding:30px 6px;color:var(--mute)}
 .ok b{display:block;font-weight:400;letter-spacing:.24em;text-transform:uppercase;font-size:.9rem;color:var(--gold2);margin-bottom:10px}
 .foot{text-align:center;margin-top:30px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.urgent{position:sticky;top:0;z-index:5;background:var(--gold);color:#0a0a0a;text-align:center;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:10px 16px;line-height:1.6}
+.gift .left{display:block;margin-top:8px;font-size:.8rem;color:var(--gold2);font-weight:500}
+.timer{display:flex;justify-content:center;gap:10px;margin:0 0 26px}
+.timer div{min-width:64px;border:1px solid var(--line);background:var(--panel);padding:10px 6px;text-align:center}
+.timer b{display:block;font-weight:400;font-size:1.3rem;color:var(--gold2);letter-spacing:.06em}
+.timer small{font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.timer-label{text-align:center;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.prof{display:flex;gap:18px;align-items:center;margin:0 0 30px;padding:18px 20px;border:1px solid var(--line);background:var(--panel)}
+.prof img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:center 20%;border:2px solid var(--gold);flex:none;background:#fff}
+.prof small{display:block;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.prof b{display:block;font-weight:400;font-size:.95rem;letter-spacing:.16em;text-transform:uppercase;margin:2px 0}
+.prof span{display:block;font-size:.82rem;color:var(--mute);line-height:1.5}
+.hint{text-align:center;margin-top:12px;font-size:.74rem;color:var(--mute)}
+.why{margin-top:34px}
+.why h2{text-align:center;font-weight:400;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.why li{list-style:none;display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--ink)}
+.why li::before{content:"";width:18px;height:1px;background:var(--gold);margin-top:12px;flex:none}
+.why li span{color:var(--mute)}
+.again{display:block;width:100%;margin-top:24px;padding:16px;text-align:center;font:600 .72rem Montserrat;letter-spacing:.26em;text-transform:uppercase;background:transparent;color:var(--gold2);border:1px solid var(--gold);text-decoration:none}
+.again:hover{background:var(--gold);color:#0a0a0a}
 </style>
 </head>
 <body>
+<div class="urgent" role="note">Inscrições abertas · Vade Mecum só para os 100 primeiros</div>
 <div class="wrap">
   <a href="./" aria-label="Voltar ao site"><img class="logo" src="logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
   <div class="eyebrow">Inscrições abertas</div>
   <h1>Preparatório OAB</h1>
 
-  <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Preencha seus dados e garanta sua vaga.</span></div>
+  <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Depois do 100º inscrito, o brinde acaba. Turmas presenciais, com vagas limitadas.</span><span class="left" id="left" hidden></span></div>
+
+  <div id="countdown" hidden>
+    <div class="timer-label">As inscrições encerram em</div>
+    <div class="timer" aria-live="off"><div><b id="cd-d">0</b><small>dias</small></div><div><b id="cd-h">00</b><small>horas</small></div><div><b id="cd-m">00</b><small>min</small></div><div><b id="cd-s">00</b><small>seg</small></div></div>
+  </div>
+
+  <div class="prof">
+    <img src="prof-hamilton.jpg" alt="Prof. Hamilton" width="400" height="400">
+    <div><small>Seu professor</small><b>Prof. Hamilton</b><span>Coordenador do Preparatório OAB. [mini-currículo]</span></div>
+  </div>
 
   <form id="f">
     <div id="fields">
@@ -72,15 +103,49 @@ button:hover{background:var(--gold2)}
       </select>
 
       <label class="check"><input type="checkbox" required> Autorizo o contato por WhatsApp e e-mail e o uso dos meus dados para esta inscrição, conforme a LGPD.</label>
-      <button type="submit">Quero minha vaga</button>
+      <button type="submit">Garantir minha vaga agora</button>
+      <p class="hint">Leva menos de 1 minuto.</p>
     </div>
     <div class="ok" id="ok"><b>Inscrição recebida</b>Em breve entraremos em contato pelo WhatsApp.</div>
   </form>
+  <div class="why">
+    <h2>Por que garantir agora</h2>
+    <ul>
+      <li><div>Vade Mecum de brinde <span>só para os 100 primeiros inscritos. Depois disso, não tem mais.</span></div></li>
+      <li><div>Turmas presenciais <span>com vagas limitadas pela capacidade das salas.</span></div></li>
+      <li><div>Início das aulas em [data] <span>e quem entra antes começa a preparação antes.</span></div></li>
+    </ul>
+    <a href="#f" class="again">Quero meu Vade Mecum</a>
+  </div>
   <div class="foot">Conhecimento que impulsiona sua carreira</div>
 </div>
 <script>
 // Troque pelo endpoint do CRM (POST JSON). Sem endpoint, só simula o envio.
 const CRM_ENDPOINT = "";
+// Data e hora em que as inscrições encerram, ex.: "2026-11-15T23:59:00-04:00". Vazio = contagem oculta.
+const PRAZO_INSCRICOES = "";
+// Quantos Vade Mecum ainda restam (número real). null = contador oculto.
+const BRINDES_RESTANTES = null;
+
+if (BRINDES_RESTANTES !== null) {
+  const left = document.getElementById('left');
+  left.textContent = BRINDES_RESTANTES > 0 ? 'Restam ' + BRINDES_RESTANTES + ' Vade Mecum' : 'Os 100 Vade Mecum já foram garantidos';
+  left.hidden = false;
+}
+if (PRAZO_INSCRICOES) {
+  const end = new Date(PRAZO_INSCRICOES).getTime(), box = document.getElementById('countdown');
+  const pad = n => String(n).padStart(2, '0');
+  const tick = () => {
+    const ms = end - Date.now();
+    if (!(ms > 0)) { box.hidden = true; return clearInterval(t); }
+    document.getElementById('cd-d').textContent = Math.floor(ms / 864e5);
+    document.getElementById('cd-h').textContent = pad(Math.floor(ms / 36e5) % 24);
+    document.getElementById('cd-m').textContent = pad(Math.floor(ms / 6e4) % 60);
+    document.getElementById('cd-s').textContent = pad(Math.floor(ms / 1e3) % 60);
+    box.hidden = false;
+  };
+  const t = setInterval(tick, 1000); tick();
+}
 document.getElementById('f').addEventListener('submit', async e=>{
   e.preventDefault();
   const data = Object.fromEntries(new FormData(e.target));
