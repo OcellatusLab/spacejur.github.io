@@ -280,21 +280,35 @@ if (prazo) {
   };
   const t = setInterval(tick, 1000); tick();
 }
-function enviarHubSpot(d) {
+async function enviarHubSpot(d) {
   const partes = d.nome.trim().split(/\s+/);
-  const body = {
-    fields: [
-      { name: 'firstname', value: partes[0] },
-      { name: 'email', value: d.email },
-      { name: 'mobilephone', value: d.whatsapp },
-      { name: 'message', value: 'Situação: ' + d.situacao + ' | Fase de interesse: ' + d.fase + ' | Origem: inscrição Preparatório OAB' }
-    ].concat(partes.length > 1 ? [{ name: 'lastname', value: partes.slice(1).join(' ') }] : []),
-    context: { pageUri: location.href, pageName: document.title },
-    legalConsentOptions: { consent: { consentToProcess: true, text: document.querySelector('.check').textContent.trim() } }
-  };
-  return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HUBSPOT_PORTAL_ID + '/' + HUBSPOT_FORM_ID, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
-  }).then(r => { if (!r.ok) throw new Error('HubSpot ' + r.status); });
+  let fields = [
+    { name: 'firstname', value: partes[0] },
+    { name: 'email', value: d.email },
+    { name: 'mobilephone', value: d.whatsapp },
+    { name: 'message', value: 'Situação: ' + d.situacao + ' | Fase de interesse: ' + d.fase + ' | Origem: inscrição Preparatório OAB' }
+  ].concat(partes.length > 1 ? [{ name: 'lastname', value: partes.slice(1).join(' ') }] : []);
+  let consent = { consent: { consentToProcess: true, text: document.querySelector('.check').textContent.trim() } };
+  const url = 'https://api.hsforms.com/submissions/v3/integration/submit/' + HUBSPOT_PORTAL_ID + '/' + HUBSPOT_FORM_ID;
+
+  // Se o formulário do HubSpot não tiver algum campo (ex.: Mensagem) ou não usar
+  // consentimento LGPD, o HubSpot recusa o envio. Nesse caso tira o que foi recusado e tenta de novo.
+  for (let tentativa = 0; tentativa < 3; tentativa++) {
+    const body = { fields, context: { pageUri: location.href, pageName: document.title } };
+    if (consent) body.legalConsentOptions = consent;
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (r.ok) return;
+    let erros = [];
+    try { erros = (await r.json()).errors || []; } catch (_) {}
+    console.warn('HubSpot recusou o envio (' + r.status + '):', erros);
+    const semCampo = erros.filter(e => /FIELD_NOT_IN_FORM_DEFINITION/.test(e.errorType || ''))
+      .map(e => ((e.message || '').match(/fields\.([\w]+)/) || [])[1]).filter(Boolean);
+    const erroConsent = erros.some(e => /LEGAL|CONSENT/.test(e.errorType || ''));
+    if (!semCampo.length && !(erroConsent && consent)) break;
+    if (semCampo.length) fields = fields.filter(f => !semCampo.includes(f.name));
+    if (erroConsent) consent = null;
+  }
+  throw new Error('HubSpot recusou o envio');
 }
 
 document.getElementById('f').addEventListener('submit', async e=>{
