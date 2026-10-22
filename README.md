@@ -14,7 +14,6 @@ python3 -m http.server 8080
 
 ## Pendências antes de ir ao ar
 
-- `assets/logo.jpg` e `assets/fachada.jpg` são imagens provisórias. Substituir pelos arquivos reais com o mesmo nome (o logo deve ter fundo preto).
 - `CRM_ENDPOINT` em `preparatorio-oab/index.html` está vazio: o envio do formulário é apenas simulado.
 - Botões "Consultoria gratuita" e "WhatsApp" do site apontam para `#`.
 - Placeholders de conteúdo: `[data]` (início das aulas), `R$ [●]` (investimento), `[mini-currículo]` e foto do Prof. Hamilton.

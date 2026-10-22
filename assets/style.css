@@ -94,7 +94,7 @@ p { margin: 0 0 1em; }
 .btn:hover { background: rgba(217, 164, 65, .1); color: var(--text); }
 .btn-primary { background: var(--gold); color: var(--bg); font-weight: 600; }
 .btn-primary:hover { background: var(--gold-light); color: var(--bg); border-color: var(--gold-light); }
-.btn-sm { min-height: 40px; padding: 8px 16px; font-size: .68rem; }
+.btn-sm { min-height: 40px; padding: 8px 14px; font-size: .66rem; letter-spacing: .14em; white-space: nowrap; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 /* ---------- Cabeçalho ---------- */
@@ -107,7 +107,7 @@ p { margin: 0 0 1em; }
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 100%; }
 .brand { display: flex; align-items: center; gap: 10px; }
-.brand img { height: 48px; width: auto; mix-blend-mode: screen; }
+.brand img { height: 26px; width: auto; mix-blend-mode: screen; }
 
 .nav-toggle {
   display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
@@ -148,13 +148,14 @@ main { padding-top: var(--header-h); }
     radial-gradient(circle at 0% 0%, rgba(217, 164, 65, .16), transparent 45%),
     radial-gradient(circle at 100% 100%, rgba(240, 198, 115, .10), transparent 45%);
 }
-.hero-logo { width: min(340px, 80%); margin: 0 auto 28px; mix-blend-mode: screen; }
+.hero-logo { width: min(620px, 100%); margin: 0 auto 40px; mix-blend-mode: screen; }
+.gold { display: block; color: var(--gold-light); }
 .hero-center { text-align: center; }
 .hero-center .lead { margin: 0 auto; }
 .hero-center .btn-row { justify-content: center; }
 
 .facade { margin: 0; border-top: 1px solid var(--line); }
-.facade img { width: 100%; height: clamp(220px, 45vw, 520px); object-fit: cover; }
+.facade img { width: 100%; height: clamp(260px, 56vw, 640px); object-fit: cover; object-position: center 45%; }
 
 /* ---------- Grades e cards ---------- */
 .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
@@ -171,15 +172,29 @@ main { padding-top: var(--header-h); }
   font-size: .72rem; font-weight: 500; letter-spacing: .3em; color: var(--gold);
 }
 
+.eco-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .eco-item {
-  display: flex; align-items: center; min-height: 72px;
-  padding: 18px 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px;
+  padding: 22px 12px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  font-size: .8rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase;
+  font-size: .68rem; font-weight: 400; letter-spacing: .12em; line-height: 1.5; text-transform: uppercase; text-align: center;
 }
+.eco-item .icon { width: 28px; height: 28px; color: var(--gold); }
 .eco-item.featured { border-color: var(--gold); color: var(--gold-light); font-weight: 500; }
+
+.icon { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.card-icon { display: flex; gap: 18px; align-items: flex-start; }
+.icon-ring {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 56px; height: 56px;
+  border: 1px solid var(--gold); border-radius: 50%;
+  color: var(--gold);
+}
+.icon-ring .icon { width: 26px; height: 26px; }
+.planet-intro { max-width: 720px; margin-bottom: 32px; padding-left: 20px; border-left: 1px solid var(--gold); }
+.planet-intro p { margin: 0; }
 
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 24px; padding: 0; }
 .tag-list li {
@@ -195,7 +210,7 @@ main { padding-top: var(--header-h); }
 /* ---------- Rodapé ---------- */
 .site-footer { padding: 40px 0; border-top: 1px solid var(--line); font-size: .8rem; color: var(--muted); }
 .footer-inner { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
-.footer-inner img { height: 56px; width: auto; mix-blend-mode: screen; }
+.footer-inner img { height: 32px; width: auto; mix-blend-mode: screen; }
 .footer-inner p { margin: 0; }
 
 /* ---------- Landing: hero + formulário ---------- */
@@ -280,6 +295,8 @@ main { padding-top: var(--header-h); }
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .eco-grid { grid-template-columns: repeat(4, 1fr); }
+  .brand img { height: 30px; }
   .section { padding: 88px 0; }
   .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
   .form-card { padding: 32px; }
@@ -292,9 +309,10 @@ main { padding-top: var(--header-h); }
   .site-nav { position: static; display: block; padding: 0; background: none; border: 0; }
   .site-nav ul { display: flex; gap: 22px; }
   .site-nav a { padding: 6px 0; border: 0; font-size: .68rem; letter-spacing: .18em; }
-  .brand img { height: 56px; }
+  .brand img { height: 36px; }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .eco-grid { grid-template-columns: repeat(7, 1fr); }
   .hero { padding: 96px 0 112px; }
   .lp-hero { padding: 72px 0 88px; }
   .lp-hero-grid { grid-template-columns: 1.05fr .95fr; gap: 56px; }
