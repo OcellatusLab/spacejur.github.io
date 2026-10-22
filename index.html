@@ -32,7 +32,7 @@
 <header>
   <div class="wrap nav">
     <a href="#"><img class="logo" src="assets/logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
-    <nav class="menu">
+    <nav class="menu" id="menu" aria-label="Menu principal">
       <a href="#sobre">Sobre</a>
       <a href="#ecossistema">Ecossistema</a>
       <a href="#oab" class="hl">Preparatório OAB</a>
@@ -40,7 +40,10 @@
       <a href="#espaco">O espaço</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a href="preparatorio-oab/" class="btn solid">Inscrever-se</a>
+    <div class="nav-right">
+      <a href="preparatorio-oab/" class="btn solid">Inscrever-se</a>
+      <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -95,7 +98,7 @@
     <div>
       <div class="eyebrow">Carro-chefe</div>
       <h2>Preparatório <b>OAB</b></h2>
-      <p class="lead">Preparação com estratégia para o Exame de Ordem, com turmas abertas a cada ciclo da prova.</p>
+      <p class="lead">Preparação com estratégia para o Exame de Ordem, da 1ª fase à 2ª fase, com mentoria.</p>
       <div class="btns" style="margin-top:30px"><a href="preparatorio-oab/" class="btn solid">Quero me inscrever</a></div>
     </div>
     <div class="steps">
@@ -122,7 +125,7 @@
   <div class="wrap center">
     <div class="eyebrow">O espaço</div>
     <h2>Conhecimento que <b>impulsiona sua carreira.</b></h2>
-    <p class="lead">Estrutura moderna e climatizada, com salas equipadas, pensada para estudar, praticar e se conectar.</p>
+    <p class="lead">Estrutura moderna, pensada para estudar, praticar e se conectar.</p>
     <div class="place" style="margin-top:36px">Manauara Shopping</div>
     <div class="btns" style="margin-top:22px">
       <a id="gmaps" class="btn solid" target="_blank" rel="noopener">Abrir no Google Maps</a>
@@ -152,6 +155,12 @@
 const LOCAL="Manauara Shopping, Manaus - AM", q=encodeURIComponent(LOCAL);
 document.getElementById('gmaps').href="https://www.google.com/maps/search/?api=1&query="+q;
 document.getElementById('uber').href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[nickname]="+encodeURIComponent("Manauara Shopping")+"&dropoff[formatted_address]="+q;
+
+const toggle=document.querySelector('.menu-toggle'), menu=document.getElementById('menu');
+function setMenu(open){menu.classList.toggle('open',open);toggle.setAttribute('aria-expanded',open);toggle.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');}
+toggle.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+menu.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false);});
 </script>
 </body>
 </html>
