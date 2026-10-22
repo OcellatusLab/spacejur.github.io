@@ -38,6 +38,10 @@ header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.92);backdrop-filt
 .menu a:hover,.menu a.hl{color:var(--gold2)}
 .menu a.hl{border-bottom:1px solid var(--gold);padding-bottom:3px}
 @media(max-width:980px){.menu{display:none}}
+.menu a{white-space:nowrap}
+@media(max-width:1180px){.menu{gap:16px;letter-spacing:.14em}}
+@media(max-width:1060px){.menu{display:none}}
+@media(max-width:520px){.nav{gap:12px}.nav .logo{height:26px}.nav .btn{padding:10px 12px!important;letter-spacing:.14em;font-size:.64rem}}
 
 /* 1ª dobra */
 .hero{padding:0;background:
@@ -136,7 +140,7 @@ footer .logo{height:34px}
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a href="inscricao.html" class="btn solid" style="padding:11px 20px">Inscrever-se</a>
+    <a href="#" class="btn solid" style="padding:11px 20px;white-space:nowrap">Área de membros</a>
   </div>
 </header>
 
