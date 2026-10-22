@@ -1,253 +1,157 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SpaceJur | Hub Jurídico em Manaus</title>
-  <meta name="description" content="SpaceJur, hub jurídico no Manauara Shopping, em Manaus. Formação, estrutura, conteúdo e oportunidades para estudantes, advogados e profissionais do Direito.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpaceJur — Hub Jurídico</title>
+<meta name="description" content="Mais que um hub. Um universo em movimento. Formação, estrutura, conteúdo e oportunidades para estudantes, advogados e profissionais do Direito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.hero .wrap{padding-block:90px;text-align:center}
+.hero .logo{width:min(760px,100%);margin:0 auto 46px}
+.hero h1{font-weight:300;font-size:clamp(.95rem,2vw,1.35rem);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);line-height:1.8}
+.hero h1 span{display:block;color:var(--ink)}
+.hero p{max-width:620px;margin:26px auto 40px;color:var(--mute)}
+.hero .btns{justify-content:center}
+.facade img{width:100%;max-height:640px;object-fit:cover;object-position:center 40%;display:block;border-block:1px solid var(--line)}
+.facade{padding:0}
+.feat{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+@media(max-width:900px){.feat{grid-template-columns:1fr}}
+.steps{display:grid;gap:14px}
+.step{display:flex;gap:24px;align-items:center;border:1px solid var(--line);background:var(--panel);padding:22px 26px}
+.step i{font-style:normal;font-size:2rem;font-weight:200;color:var(--gold2);width:36px}
+.step b{display:block;font-weight:500;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+.step span{color:var(--mute);font-size:.88rem}
+.place{font-size:clamp(1.1rem,2.4vw,1.5rem);letter-spacing:.3em;text-transform:uppercase;font-weight:300;margin:10px 0 6px}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="./" aria-label="SpaceJur, página inicial">
-        <img src="assets/logo.jpg" alt="SpaceJur Hub Jurídico" width="1196" height="231">
-      </a>
-      <nav class="site-nav" id="site-nav" aria-label="Menu principal">
-        <ul>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#ecossistema">Ecossistema</a></li>
-          <li><a href="#preparatorio">Preparatório OAB</a></li>
-          <li><a href="#marketing">Marketing Jurídico</a></li>
-          <li><a href="#espaco">O espaço</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <a class="btn btn-primary btn-sm" href="preparatorio-oab/">Inscrever-se</a>
-        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+<header>
+  <div class="wrap nav">
+    <a href="#"><img class="logo" src="assets/logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
+    <nav class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#ecossistema">Ecossistema</a>
+      <a href="#oab" class="hl">Preparatório OAB</a>
+      <a href="#marketing">Marketing Jurídico</a>
+      <a href="#espaco">O espaço</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="preparatorio-oab/" class="btn solid">Inscrever-se</a>
+  </div>
+</header>
+
+<section class="hero glow" style="padding:0">
+  <div class="wrap">
+    <img class="logo" src="assets/logo.jpg" alt="SpaceJur — Hub Jurídico">
+    <h1>Mais que um hub.<span>Um universo em movimento.</span></h1>
+    <p>Um ecossistema completo que conecta formação, estrutura, conteúdo e oportunidades para estudantes, advogados e profissionais do Direito.</p>
+    <div class="btns"><a href="preparatorio-oab/" class="btn solid">Preparatório OAB</a><a href="#ecossistema" class="btn">Conheça o hub</a></div>
+  </div>
+</section>
+
+<section class="facade"><img src="assets/fachada.jpg" alt="Fachada da SpaceJur"></section>
+
+<section id="sobre">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Sobre</div>
+      <h2>Onde o conhecimento <b>encontra a prática.</b></h2>
+      <p class="lead">As conexões geram oportunidades e novas trajetórias começam. A SpaceJur reúne, em um único lugar, tudo o que a carreira jurídica precisa, do primeiro passo à especialização.</p>
     </div>
-  </header>
-
-  <main id="conteudo">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-center">
-        <img class="hero-logo" src="assets/logo.jpg" alt="SpaceJur Hub Jurídico" width="1196" height="231">
-        <h1><span class="gold">Mais que um hub.</span> Um universo em movimento.</h1>
-        <p class="lead">A SpaceJur é um ecossistema completo que conecta formação, estrutura, conteúdo e oportunidades para estudantes, advogados e profissionais do Direito, no Manauara Shopping, em Manaus.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="preparatorio-oab/">Preparatório OAB</a>
-          <a class="btn" href="#sobre">Conheça o hub</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Fachada -->
-    <figure class="facade">
-      <img src="assets/fachada.jpg" alt="Fachada da SpaceJur iluminada ao entardecer, com o logo e o slogan Conhecimento que impulsiona sua carreira" width="1448" height="1086" loading="lazy">
-    </figure>
-
-    <!-- Sobre -->
-    <section class="section" id="sobre">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Nossa essência</span>
-          <h2>Onde o conhecimento encontra a prática</h2>
-          <p class="lead">Um espaço onde o conhecimento encontra a prática, as conexões geram oportunidades e novas trajetórias começam.</p>
-        </div>
-        <div class="planet-intro">
-          <h3>O planeta</h3>
-          <p class="muted">O planeta da SpaceJur representa um universo de oportunidades, conectando pessoas, ideias e caminhos para o desenvolvimento jurídico.</p>
-        </div>
-        <div class="grid grid-2">
-          <article class="card card-icon">
-            <span class="icon-ring"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5.5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/></svg></span>
-            <div>
-              <h3>Um universo de possibilidades</h3>
-              <p class="muted">O planeta simboliza um ecossistema que reúne formação, prática jurídica, empreendedorismo, tecnologia, conteúdo e conexões profissionais em um único lugar.</p>
-            </div>
-          </article>
-          <article class="card card-icon">
-            <span class="icon-ring"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="6" r="2.2"/><circle cx="6" cy="17" r="2.2"/><circle cx="18" cy="17" r="2.2"/><circle cx="12" cy="13" r="1.6"/><path d="M12 8.2v3.2"/><path d="M7.8 15.8l2.9-1.9"/><path d="M16.2 15.8l-2.9-1.9"/></svg></span>
-            <div>
-              <h3>A órbita representa conexão</h3>
-              <p class="muted">O anel que envolve o planeta representa os diferentes serviços, profissionais e oportunidades que se conectam dentro do hub. Cada área tem sua própria função, mas todas fazem parte de um mesmo sistema.</p>
-            </div>
-          </article>
-          <article class="card card-icon">
-            <span class="icon-ring"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-            <div>
-              <h3>Expansão e evolução</h3>
-              <p class="muted">O movimento orbital transmite a ideia de crescimento contínuo, inovação e novas possibilidades para estudantes, advogados e empreendedores do mercado jurídico.</p>
-            </div>
-          </article>
-          <article class="card card-icon">
-            <span class="icon-ring"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18"/><path d="M9.5 4L8 9l4 11 4-11-1.5-5"/></svg></span>
-            <div>
-              <h3>Preto e dourado: autoridade e valor</h3>
-              <p class="muted">O preto transmite solidez, sofisticação e autoridade. O dourado acrescenta valor, excelência e ambição. A tipografia geométrica reforça uma identidade contemporânea, tecnológica e profissional.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Ecossistema -->
-    <section class="section" id="ecossistema">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Ecossistema</span>
-          <h2>Tudo o que você precisa para evoluir na sua carreira</h2>
-        </div>
-        <ul class="grid eco-grid plain-list">
-          <li class="eco-item featured"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span>Preparação para OAB</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span>Cursos de prática jurídica</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="3"/><circle cx="16.5" cy="8.5" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M17 14c2.5.4 4 2 4 5"/></svg><span>Espaço de coworking jurídico</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg><span>Produção de podcast e estúdio fotográfico</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10v4h3l8 5V5l-8 5z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg><span>Agência de marketing jurídico</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16v14H4z"/><path d="M4 10h16"/><path d="M8 3v4"/><path d="M16 3v4"/></svg><span>Sala de reunião e pequenos eventos</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 11h2a2 2 0 0 1 0 4h-2"/><path d="M8 3v3"/><path d="M12 3v3"/></svg><span>Space Coffee</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h10v18H7z"/><path d="M13 7l-3 5h4l-3 5"/></svg><span>Eletroposto</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span>Empreendedorismo jurídico</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7"/><path d="M9 16h7"/></svg><span>Blog</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6c-2-1.5-5-2-8-2v15c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2z"/><path d="M12 6v15"/></svg><span>Biblioteca</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M7 9h7"/><path d="M7 13h7"/><path d="M7 16h4"/></svg><span>Notícias</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l4-4 5 2 5-2 4 4"/><path d="M7 7l-4 4 6 6 2-1"/><path d="M17 7l4 4-6 6-3-2"/><path d="M10 12l3 3"/></svg><span>Parceiros apoiadores</span></li>
-          <li class="eco-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 21V3h12v18"/><path d="M3 21h18"/><path d="M9 7h2"/><path d="M13 7h2"/><path d="M9 11h2"/><path d="M13 11h2"/><path d="M9 15h2"/><path d="M13 15h2"/></svg><span>Escritórios apoiadores</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Preparatório OAB -->
-    <section class="section" id="preparatorio">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Carro-chefe</span>
-          <h2>Preparatório OAB</h2>
-          <p class="lead">Preparação completa para o Exame de Ordem, da prova objetiva à prática profissional.</p>
-        </div>
-        <div class="grid grid-3">
-          <article class="card">
-            <span class="num">01</span>
-            <h3>1ª fase</h3>
-            <p class="muted">Preparação para a prova objetiva, com revisão dos conteúdos cobrados e treino com questões.</p>
-          </article>
-          <article class="card">
-            <span class="num">02</span>
-            <h3>2ª fase</h3>
-            <p class="muted">Preparação para a prova prático-profissional: peça e questões discursivas na área escolhida.</p>
-          </article>
-          <article class="card">
-            <span class="num">03</span>
-            <h3>Mentoria</h3>
-            <p class="muted">Acompanhamento próximo para organizar a rotina de estudos e ajustar a estratégia até a prova.</p>
-          </article>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="preparatorio-oab/">Quero me inscrever</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Marketing jurídico -->
-    <section class="section" id="marketing">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Marketing jurídico</span>
-          <h2>ADV Taon</h2>
-          <p class="lead">A agência de marketing jurídico do hub. Presença digital para advogados e escritórios, dentro das regras da advocacia.</p>
-        </div>
-        <ul class="tag-list">
-          <li>Site</li>
-          <li>Tráfego pago</li>
-          <li>Podcast</li>
-          <li>Entrevistas</li>
-        </ul>
-        <a class="btn" href="https://advtaon.com" target="_blank" rel="noopener">Conheça a ADV Taon<span class="sr-only"> (abre em nova aba)</span></a>
-      </div>
-    </section>
-
-    <!-- O espaço -->
-    <section class="section" id="espaco">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">O espaço</span>
-          <h2>Estrutura pensada para o Direito</h2>
-          <p class="lead">Salas de aula, coworking, estúdio, sala de reunião e café, em um endereço central de Manaus.</p>
-          <p class="place"><span class="muted">Local</span><strong>Manauara Shopping</strong><span class="muted">Manaus, AM</span></p>
-        </div>
-        <div class="btn-row" id="location-buttons"></div>
-      </div>
-    </section>
-
-    <!-- Contato -->
-    <section class="section" id="contato">
-      <div class="container cta-final">
-        <span class="eyebrow">Contato</span>
-        <h2>Vamos conversar</h2>
-        <p class="lead">Tire dúvidas sobre o preparatório, o coworking ou os serviços do hub.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#">Consultoria gratuita</a>
-          <a class="btn" href="#">WhatsApp</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <img src="assets/logo.jpg" alt="SpaceJur" width="1196" height="231" loading="lazy">
-      <p>Manauara Shopping, Manaus - AM</p>
-      <p>&copy; <span id="ano"></span> SpaceJur Hub Jurídico</p>
+    <div class="cards" style="margin-top:0;grid-template-columns:1fr">
+      <div class="card"><h3>Um universo de possibilidades</h3><p>Formação, prática jurídica, empreendedorismo, tecnologia, conteúdo e conexões profissionais em um único lugar.</p></div>
+      <div class="card"><h3>A órbita representa conexão</h3><p>Cada área tem sua função, mas todas fazem parte de um mesmo sistema.</p></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    const LOCAL = "Manauara Shopping, Manaus - AM";
+<section class="alt" id="ecossistema">
+  <div class="wrap center">
+    <div class="eyebrow">Ecossistema</div>
+    <h2>Tudo o que você precisa <b>para evoluir na carreira.</b></h2>
+    <div class="tiles">
+      <div class="tile hl">Preparação para OAB</div>
+      <div class="tile">Cursos de prática jurídica</div>
+      <div class="tile">Coworking jurídico</div>
+      <div class="tile">Podcast e estúdio fotográfico</div>
+      <div class="tile">Agência de marketing jurídico</div>
+      <div class="tile">Sala de reunião e pequenos eventos</div>
+      <div class="tile">Space Coffee</div>
+      <div class="tile">Eletroposto</div>
+      <div class="tile">Empreendedorismo jurídico</div>
+      <div class="tile">Blog, biblioteca e notícias</div>
+      <div class="tile">Parceiros apoiadores</div>
+      <div class="tile">Escritórios apoiadores</div>
+    </div>
+  </div>
+</section>
 
-    // Botões de rota (Google Maps e Uber)
-    (function () {
-      const q = encodeURIComponent(LOCAL);
-      const links = [
-        { label: "Abrir no Google Maps", href: "https://www.google.com/maps/search/?api=1&query=" + q, primary: true },
-        { label: "Ir de Uber", href: "https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[nickname]=" + encodeURIComponent("Manauara Shopping") + "&dropoff[formatted_address]=" + q }
-      ];
-      const box = document.getElementById("location-buttons");
-      links.forEach(function (l) {
-        const a = document.createElement("a");
-        a.className = "btn" + (l.primary ? " btn-primary" : "");
-        a.href = l.href;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = l.label;
-        box.appendChild(a);
-      });
-    })();
+<section id="oab">
+  <div class="wrap feat">
+    <div>
+      <div class="eyebrow">Carro-chefe</div>
+      <h2>Preparatório <b>OAB</b></h2>
+      <p class="lead">Preparação com estratégia para o Exame de Ordem, com turmas abertas a cada ciclo da prova.</p>
+      <div class="btns" style="margin-top:30px"><a href="preparatorio-oab/" class="btn solid">Quero me inscrever</a></div>
+    </div>
+    <div class="steps">
+      <div class="step"><i>1</i><div><b>1ª Fase</b><span>Prova objetiva de múltipla escolha</span></div></div>
+      <div class="step"><i>2</i><div><b>2ª Fase</b><span>Prova prática na área escolhida, com peça</span></div></div>
+      <div class="step"><i>3</i><div><b>Mentoria</b><span>Acompanhamento individual de desempenho</span></div></div>
+    </div>
+  </div>
+</section>
 
-    // Menu mobile
-    (function () {
-      const toggle = document.querySelector(".nav-toggle");
-      const nav = document.getElementById("site-nav");
-      function setOpen(open) {
-        nav.classList.toggle("open", open);
-        toggle.setAttribute("aria-expanded", String(open));
-        toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-      }
-      toggle.addEventListener("click", function () { setOpen(!nav.classList.contains("open")); });
-      nav.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
-      document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
-    })();
+<section class="alt" id="marketing">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Marketing jurídico</div>
+      <h2>ADV <b>Taon</b></h2>
+      <p class="lead">Marketing digital para advogados e escritórios: site, tráfego pago, podcast e entrevistas.</p>
+      <div class="btns" style="margin-top:30px"><a href="https://advtaon.com" target="_blank" rel="noopener" class="btn">Conhecer a ADV Taon</a></div>
+    </div>
+    <div class="card hl"><h3>Para quem</h3><p>Do advogado que precisa de presença digital ao escritório que quer estrutura comercial e automação.</p></div>
+  </div>
+</section>
 
-    document.getElementById("ano").textContent = new Date().getFullYear();
-  </script>
+<section id="espaco">
+  <div class="wrap center">
+    <div class="eyebrow">O espaço</div>
+    <h2>Conhecimento que <b>impulsiona sua carreira.</b></h2>
+    <p class="lead">Estrutura moderna e climatizada, com salas equipadas, pensada para estudar, praticar e se conectar.</p>
+    <div class="place" style="margin-top:36px">Manauara Shopping</div>
+    <div class="btns" style="margin-top:22px">
+      <a id="gmaps" class="btn solid" target="_blank" rel="noopener">Abrir no Google Maps</a>
+      <a id="uber" class="btn" target="_blank" rel="noopener">Pedir Uber até lá</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt center" id="contato">
+  <div class="wrap">
+    <div class="eyebrow">Contato</div>
+    <h2>Vamos <b>conversar?</b></h2>
+    <p class="lead">Peça sua consultoria gratuita ou tire dúvidas sobre o preparatório.</p>
+    <div class="btns" style="margin-top:30px"><a href="#" class="btn solid">Consultoria gratuita</a><a href="#" class="btn">WhatsApp</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <a href="#"><img class="logo" src="assets/logo.jpg" alt="SpaceJur"></a>
+    <div>Conhecimento que impulsiona sua carreira.</div>
+    <div>© 2026 SpaceJur</div>
+  </div>
+</footer>
+
+<script>
+const LOCAL="Manauara Shopping, Manaus - AM", q=encodeURIComponent(LOCAL);
+document.getElementById('gmaps').href="https://www.google.com/maps/search/?api=1&query="+q;
+document.getElementById('uber').href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[nickname]="+encodeURIComponent("Manauara Shopping")+"&dropoff[formatted_address]="+q;
+</script>
 </body>
 </html>

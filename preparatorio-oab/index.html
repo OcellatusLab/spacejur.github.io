@@ -1,294 +1,164 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Preparatório OAB | SpaceJur</title>
-  <meta name="description" content="Inscreva-se no Preparatório OAB da SpaceJur, no Manauara Shopping, em Manaus. 1ª fase, 2ª fase e mentoria.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preparatório OAB — Inscrições | SpaceJur</title>
+<meta name="description" content="Inscreva-se no Preparatório OAB da SpaceJur. Os 100 primeiros inscritos ganham um Vade Mecum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start;padding-block:70px}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px}}
+.hero h1{font-weight:300;font-size:clamp(1.5rem,3.6vw,2.4rem);letter-spacing:.22em;text-transform:uppercase;line-height:1.5;margin-bottom:20px}
+.hero h1 span{color:var(--gold)}
+.gift{margin:28px 0;border:1px solid var(--gold);padding:20px 24px;background:rgba(217,164,65,.06)}
+.gift b{display:block;font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);line-height:1.8}
+.gift span{font-size:.88rem;color:var(--mute)}
+.mini{display:flex;gap:30px;flex-wrap:wrap;margin-top:6px}
+.mini div{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.mini b{display:block;font-weight:400;font-size:1rem;letter-spacing:.12em;color:var(--ink);margin-top:2px}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.how div{background:var(--panel);padding:26px}
+.how i{font-style:normal;color:var(--gold);font-size:.7rem;letter-spacing:.3em}
+.how h4{font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin:8px 0}
+.how p{color:var(--mute);font-size:.88rem}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;list-style:none}
+summary::after{content:"+";float:right;color:var(--gold)}
+details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin-top:12px;font-size:.92rem}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="../" aria-label="SpaceJur, voltar ao site">
-        <img src="../assets/logo.jpg" alt="SpaceJur Hub Jurídico" width="1196" height="231">
-      </a>
-      <a class="btn btn-primary btn-sm" href="#inscricao">Inscrever-se</a>
+<header>
+  <div class="wrap nav">
+    <a href="../"><img class="logo" src="../assets/logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
+    <a href="#inscricao" class="btn solid">Inscrever-se</a>
+  </div>
+</header>
+
+<section class="hero glow" style="padding:0">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Inscrições abertas</div>
+      <h1>Preparatório <span>OAB</span></h1>
+      <p class="lead">Da 1ª fase à aprovação. Preparação com estratégia, em uma estrutura moderna, com acompanhamento de quem conhece a prova.</p>
+      <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Garanta o seu preenchendo o formulário ao lado.</span></div>
+      <div class="mini">
+        <div>Início das aulas<b>[data]</b></div>
+        <div>Local<b>Manauara Shopping</b></div>
+      </div>
     </div>
-  </header>
 
-  <main id="conteudo">
-    <!-- Hero + formulário -->
-    <section class="hero lp-hero">
-      <div class="container lp-hero-grid">
-        <div>
-          <span class="eyebrow">SpaceJur Hub Jurídico</span>
-          <h1>Preparatório OAB</h1>
-          <p class="lead">Preparação para o Exame de Ordem com método, acompanhamento e estrutura completa no Manauara Shopping.</p>
-          <p class="highlight">Os 100 primeiros inscritos ganham um Vade Mecum.</p>
-          <ul class="mini-info">
-            <li><span>Início das aulas</span>[data]</li>
-            <li><span>Local</span>Manauara Shopping, Manaus - AM</li>
-          </ul>
+    <form id="inscricao">
+      <div id="fields">
+        <h3>Inscrição</h3>
+        <p class="sub">Preencha seus dados e garanta sua vaga.</p>
+
+        <label for="nome">Nome completo</label>
+        <input id="nome" name="nome" required autocomplete="name">
+
+        <div class="row2">
+          <div><label for="email">E-mail</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+          <div><label for="whats">WhatsApp</label><input id="whats" name="whatsapp" type="tel" required placeholder="(00) 00000-0000" autocomplete="tel"></div>
         </div>
 
-        <div class="form-card" id="inscricao">
-          <div id="form-wrap">
-            <h2>Garanta sua vaga</h2>
-            <form id="lead-form" novalidate>
-              <div class="field">
-                <label for="nome">Nome completo <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="nome" name="nome" autocomplete="name" required minlength="3">
-              </div>
-              <div class="field">
-                <label for="email">E-mail <span class="req" aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
-              </div>
-              <div class="field">
-                <label for="whatsapp">WhatsApp <span class="req" aria-hidden="true">*</span></label>
-                <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(92) 90000-0000" required pattern="[\d\s()+\-]{10,20}">
-              </div>
-              <div class="field">
-                <label for="situacao">Situação atual <span class="req" aria-hidden="true">*</span></label>
-                <select id="situacao" name="situacao" required>
-                  <option value="">Selecione</option>
-                  <option value="estudante">Estudante de Direito</option>
-                  <option value="bacharel">Bacharel</option>
-                  <option value="aprovado-1fase">Já aprovado(a) na 1ª fase</option>
-                  <option value="advogado">Advogado(a)</option>
-                  <option value="outro">Outro</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="fase">Fase de interesse <span class="req" aria-hidden="true">*</span></label>
-                <select id="fase" name="fase" required>
-                  <option value="">Selecione</option>
-                  <option value="1fase">1ª fase</option>
-                  <option value="2fase">2ª fase</option>
-                  <option value="mentoria">Mentoria</option>
-                  <option value="nao-sei">Ainda não sei</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="consent" for="lgpd">
-                  <input type="checkbox" id="lgpd" name="lgpd" required>
-                  <span>Autorizo a SpaceJur a usar meus dados para contato sobre o Preparatório OAB, conforme a LGPD (Lei 13.709/2018). <span class="req" aria-hidden="true">*</span></span>
-                </label>
-              </div>
-              <p class="form-error" id="form-error" role="alert" aria-live="assertive"></p>
-              <button class="btn btn-primary" type="submit">Quero me inscrever</button>
-              <p class="form-note">Todos os campos são obrigatórios.</p>
-            </form>
-          </div>
-        </div>
+        <label for="sit">Situação atual</label>
+        <select id="sit" name="situacao" required>
+          <option value="">Selecione</option>
+          <option>Estudante de Direito</option>
+          <option>Bacharel em Direito</option>
+          <option>Já fui aprovado na 1ª fase da OAB</option>
+          <option>Advogado(a)</option>
+          <option>Outro</option>
+        </select>
+
+        <label for="fase">Em qual fase você quer se preparar?</label>
+        <select id="fase" name="fase" required>
+          <option value="">Selecione</option>
+          <option>1ª fase</option>
+          <option>2ª fase</option>
+          <option>Mentoria</option>
+          <option>Ainda não sei</option>
+        </select>
+
+        <label class="check"><input type="checkbox" required> Autorizo o contato por WhatsApp e e-mail e o uso dos meus dados para esta inscrição, conforme a LGPD.</label>
+        <button class="btn solid" type="submit">Quero minha vaga</button>
       </div>
-    </section>
+      <div class="ok" id="ok"><b>Inscrição recebida</b>Em breve entraremos em contato pelo WhatsApp.</div>
+    </form>
+  </div>
+</section>
 
-    <!-- Etapas -->
-    <section class="section" id="etapas">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Etapas</span>
-          <h2>Escolha por onde começar</h2>
-        </div>
-        <div class="grid grid-3">
-          <article class="card">
-            <span class="num">01</span>
-            <h3>1ª fase</h3>
-            <p class="muted">Preparação para a prova objetiva, com revisão dos conteúdos cobrados e treino com questões.</p>
-          </article>
-          <article class="card">
-            <span class="num">02</span>
-            <h3>2ª fase</h3>
-            <p class="muted">Preparação para a prova prático-profissional: peça e questões discursivas na área escolhida.</p>
-          </article>
-          <article class="card">
-            <span class="num">03</span>
-            <h3>Mentoria</h3>
-            <p class="muted">Acompanhamento próximo para organizar a rotina de estudos e ajustar a estratégia até a prova.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Como funciona -->
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Como funciona</span>
-          <h2>O caminho até a carteira</h2>
-        </div>
-        <ol class="steps-list grid grid-3">
-          <li class="card">
-            <span class="num">Passo 1</span>
-            <h3>1ª fase objetiva</h3>
-            <p class="muted">Prova de múltipla escolha que abrange as disciplinas do Exame de Ordem. A aprovação libera a 2ª fase.</p>
-          </li>
-          <li class="card">
-            <span class="num">Passo 2</span>
-            <h3>2ª fase</h3>
-            <p class="muted">Realizada cerca de 15 a 20 dias depois da 1ª fase, na área escolhida: peça profissional e questões discursivas.</p>
-          </li>
-          <li class="card">
-            <span class="num">Passo 3</span>
-            <h3>Repescagem da 2ª fase</h3>
-            <p class="muted">Quem passou na 1ª fase e não foi aprovado na 2ª pode refazer apenas a 2ª fase no exame seguinte.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Professor -->
-    <section class="section" id="professor">
-      <div class="container prof-grid">
-        <div class="photo-frame" role="img" aria-label="Espaço reservado para a foto do Prof. Hamilton">Foto do<br>Prof. Hamilton</div>
-        <div>
-          <span class="eyebrow">Coordenação</span>
-          <h2>Prof. Hamilton</h2>
-          <p class="muted">[mini-currículo]</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Dúvidas frequentes</span>
-          <h2>Perguntas e respostas</h2>
-        </div>
-        <div class="faq">
-          <details>
-            <summary>Quando começam as aulas?</summary>
-            <p>As aulas começam em [data]. Os inscritos recebem a confirmação e os próximos passos pelo WhatsApp e e-mail informados.</p>
-          </details>
-          <details>
-            <summary>Onde acontecem as aulas?</summary>
-            <p>Na SpaceJur, no Manauara Shopping, em Manaus - AM.</p>
-          </details>
-          <details>
-            <summary>Quanto custa?</summary>
-            <p>Investimento: R$ [●]. Valores e condições de pagamento são enviados após a inscrição.</p>
-          </details>
-          <details>
-            <summary>Ainda estou na faculdade. Posso me inscrever?</summary>
-            <p>Sim. Estudantes de Direito podem se inscrever e escolher a etapa mais adequada ao seu momento. Se tiver dúvida, marque "Ainda não sei" no formulário.</p>
-          </details>
-          <details>
-            <summary>Como funciona o brinde do Vade Mecum?</summary>
-            <p>Os 100 primeiros inscritos ganham um Vade Mecum. As regras de retirada são informadas na confirmação da inscrição.</p>
-          </details>
-          <details>
-            <summary>A inscrição já garante a matrícula?</summary>
-            <p>A inscrição reserva seu interesse. Nossa equipe entra em contato para confirmar turma, valores e matrícula.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA final -->
-    <section class="section hero cta-final">
-      <div class="container">
-        <span class="eyebrow">Conhecimento que impulsiona sua carreira</span>
-        <h2>Comece sua preparação na SpaceJur</h2>
-        <p class="lead">Os 100 primeiros inscritos ganham um Vade Mecum.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#inscricao">Inscrever-se agora</a>
-          <a class="btn" href="../">Conheça o hub</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a href="../" aria-label="SpaceJur, voltar ao site"><img src="../assets/logo.jpg" alt="SpaceJur" width="1196" height="231" loading="lazy"></a>
-      <p>Manauara Shopping, Manaus - AM</p>
-      <p>&copy; <span id="ano"></span> SpaceJur Hub Jurídico</p>
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">O preparatório</div>
+    <h2>Escolha sua <b>etapa.</b></h2>
+    <div class="cards">
+      <div class="card"><h3>1ª Fase</h3><p>Prova objetiva de múltipla escolha. Revisão por disciplina, questões e simulados.</p></div>
+      <div class="card"><h3>2ª Fase</h3><p>Prova prática na área que você escolher, com treino de peças e correção.</p></div>
+      <div class="card"><h3>Mentoria</h3><p>Acompanhamento individual: diagnóstico, metas e ajustes ao longo da preparação.</p></div>
     </div>
-  </footer>
+    <div class="how">
+      <div><i>01</i><h4>1ª fase</h4><p>Prova objetiva, com data própria.</p></div>
+      <div><i>02</i><h4>2ª fase</h4><p>Cerca de 15 a 20 dias depois, na área que você escolheu na inscrição do exame.</p></div>
+      <div><i>03</i><h4>Repescagem</h4><p>Quem passa na 1ª e não passa na 2ª pode refazer a 2ª fase no exame seguinte.</p></div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Endpoint do CRM. Vazio = modo simulação (nada é enviado).
-    const CRM_ENDPOINT = "";
+<section>
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow">Professor</div>
+      <h2>Prof. <b>Hamilton</b></h2>
+      <p class="lead">Coordenador do Preparatório OAB. [Mini-currículo e resultados a confirmar.]</p>
+    </div>
+    <div style="aspect-ratio:4/5;max-width:380px;width:100%;background:linear-gradient(160deg,#2a2a30,#16161a);display:grid;place-items:center;color:#8a8478;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:3px solid var(--gold)">Foto do professor</div>
+  </div>
+</section>
 
-    (function () {
-      const form = document.getElementById("lead-form");
-      const wrap = document.getElementById("form-wrap");
-      const errorBox = document.getElementById("form-error");
-      const fields = Array.from(form.querySelectorAll("input, select"));
+<section class="alt">
+  <div class="wrap" style="max-width:820px">
+    <div class="eyebrow">Dúvidas</div>
+    <h2>Perguntas <b>frequentes</b></h2>
+    <details><summary>Quando começam as aulas?</summary><p>[Data de início a confirmar.]</p></details>
+    <details><summary>Onde são as aulas?</summary><p>Presenciais, no Manauara Shopping, em salas climatizadas e equipadas.</p></details>
+    <details><summary>Como funciona o Vade Mecum?</summary><p>Os 100 primeiros inscritos no preparatório ganham um Vade Mecum.</p></details>
+    <details><summary>Posso entrar só na 2ª fase?</summary><p>Sim. No formulário, escolha a fase em que você quer se preparar.</p></details>
+  </div>
+</section>
 
-      fields.forEach(function (el) {
-        el.addEventListener("input", function () { el.removeAttribute("aria-invalid"); });
-        el.addEventListener("change", function () { el.removeAttribute("aria-invalid"); });
-      });
+<section class="center">
+  <div class="wrap">
+    <h2>Garanta sua <b>vaga.</b></h2>
+    <div class="btns" style="margin-top:20px"><a href="#inscricao" class="btn solid">Fazer minha inscrição</a></div>
+  </div>
+</section>
 
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        errorBox.textContent = "";
+<footer>
+  <div class="wrap row">
+    <a href="../"><img class="logo" src="../assets/logo.jpg" alt="SpaceJur"></a>
+    <div>Conhecimento que impulsiona sua carreira.</div>
+    <div>© 2026 SpaceJur</div>
+  </div>
+</footer>
 
-        let firstInvalid = null;
-        fields.forEach(function (el) {
-          if (el.type !== "checkbox") el.value = el.value.trim();
-          const ok = el.checkValidity();
-          if (!ok) { el.setAttribute("aria-invalid", "true"); firstInvalid = firstInvalid || el; }
-          else el.removeAttribute("aria-invalid");
-        });
-
-        if (firstInvalid) {
-          errorBox.textContent = firstInvalid.id === "lgpd"
-            ? "Para continuar, marque o consentimento de uso dos dados (LGPD)."
-            : "Preencha corretamente todos os campos obrigatórios.";
-          firstInvalid.focus();
-          return;
-        }
-
-        const data = {
-          nome: form.nome.value,
-          email: form.email.value,
-          whatsapp: form.whatsapp.value,
-          situacao: form.situacao.value,
-          fase: form.fase.value,
-          consentimento_lgpd: form.lgpd.checked,
-          origem: "landing-preparatorio-oab",
-          enviado_em: new Date().toISOString()
-        };
-
-        const button = form.querySelector("button[type=submit]");
-        button.disabled = true;
-        button.textContent = "Enviando...";
-
-        try {
-          if (CRM_ENDPOINT) {
-            const res = await fetch(CRM_ENDPOINT, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(data)
-            });
-            if (!res.ok) throw new Error("HTTP " + res.status);
-          } else {
-            console.info("CRM_ENDPOINT vazio: envio simulado.", data);
-          }
-          wrap.innerHTML =
-            '<div class="success" tabindex="-1">' +
-            '<h2>Inscrição recebida</h2>' +
-            '<p class="muted">Obrigado! Em breve entraremos em contato pelo WhatsApp e e-mail informados.</p>' +
-            '</div>';
-          wrap.querySelector(".success").focus();
-        } catch (err) {
-          errorBox.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
-          button.disabled = false;
-          button.textContent = "Quero me inscrever";
-        }
-      });
-
-      document.getElementById("ano").textContent = new Date().getFullYear();
-    })();
-  </script>
+<script>
+// Troque pelo endpoint do CRM (POST JSON). Sem endpoint, só simula o envio.
+const CRM_ENDPOINT = "";
+document.getElementById('inscricao').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  if(CRM_ENDPOINT){
+    try{ await fetch(CRM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }catch(_){}
+  }
+  document.getElementById('fields').style.display='none';
+  document.getElementById('ok').style.display='block';
+});
+</script>
 </body>
 </html>
