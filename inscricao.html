@@ -100,6 +100,15 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
 .gift{animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(217,164,65,0)}50%{transform:scale(1.015);box-shadow:0 0 22px 2px rgba(217,164,65,.28)}}
 @media(prefers-reduced-motion:reduce){.gift{animation:none}}
+.counter{margin-top:16px;text-align:left}
+.cnt-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.78rem;color:var(--mute)}
+.cnt-top strong{color:var(--gold2);font-weight:600;font-size:1rem}
+.cnt-top .rest{color:#f0a091;font-weight:500}
+.cnt-bar{height:8px;margin-top:8px;background:#1c1810;border:1px solid var(--line);overflow:hidden}
+.cnt-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .8s ease}
+.cnt-bump{animation:bump .6s ease}
+@keyframes bump{50%{transform:scale(1.25)}}
+.demo-note{text-align:center;margin-top:8px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#6d675c}
 </style>
 </head>
 <body>
@@ -110,12 +119,16 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
   <h1>Preparatório OAB</h1>
   <p class="hook"><strong>Ele acertou a peça da OAB. De novo.</strong>Na última prova, a peça da 2ª fase caiu exatamente como o Prof. Hamilton Junior tinha preparado os alunos.</p>
 
-  <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Depois do 100º inscrito, o brinde acaba. Turmas presenciais, com vagas limitadas.</span><span class="left" id="left" hidden></span></div>
+  <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Depois do 100º inscrito, o brinde acaba. Turmas presenciais, com vagas limitadas.</span><div class="counter" id="counter" hidden>
+      <div class="cnt-top"><span><strong id="cnt-n">0</strong> de 100 Vade Mecum garantidos</span><span class="rest" id="cnt-left"></span></div>
+      <div class="cnt-bar"><i id="cnt-bar"></i></div>
+    </div></div>
 
   <div id="countdown" hidden>
     <div class="timer-label">As inscrições encerram em</div>
     <div class="timer" aria-live="off"><div><b id="cd-d">0</b><small>dias</small></div><div><b id="cd-h">00</b><small>horas</small></div><div><b id="cd-m">00</b><small>min</small></div><div><b id="cd-s">00</b><small>seg</small></div></div>
   </div>
+  <p class="demo-note" id="demo-note" hidden>Contador e prazo com valores de demonstração</p>
 
   <div class="prof-big">
     <div class="portrait">
@@ -208,21 +221,49 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
 <script>
 // Troque pelo endpoint do CRM (POST JSON). Sem endpoint, só simula o envio.
 const CRM_ENDPOINT = "";
-// Data e hora em que as inscrições encerram, ex.: "2026-11-15T23:59:00-04:00". Vazio = contagem oculta.
+// MVP: true usa valores de demonstração no contador e no temporizador.
+// Para ir ao ar, troque para false e preencha PRAZO_INSCRICOES e INSCRITOS com dados reais.
+const MODO_DEMO = true;
+// Data e hora em que as inscrições encerram, ex.: "2026-11-15T23:59:00-04:00".
 const PRAZO_INSCRICOES = "";
-// Quantos Vade Mecum ainda restam (número real). null = contador oculto.
-const BRINDES_RESTANTES = null;
+// Quantas pessoas já se inscreveram (número real). null = contador oculto.
+const INSCRITOS = null;
+const LIMITE_BRINDE = 100;
 
-if (BRINDES_RESTANTES !== null) {
-  const left = document.getElementById('left');
-  left.textContent = BRINDES_RESTANTES > 0 ? 'Restam ' + BRINDES_RESTANTES + ' Vade Mecum' : 'Os 100 Vade Mecum já foram garantidos';
-  left.hidden = false;
+const pad = n => String(n).padStart(2, '0');
+const store = { get(k){ try{ return localStorage.getItem(k); }catch(_){ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch(_){} } };
+
+let inscritos = INSCRITOS, prazo = PRAZO_INSCRICOES ? new Date(PRAZO_INSCRICOES).getTime() : null;
+if (MODO_DEMO) {
+  inscritos = Number(store.get('sj-demo-inscritos')) || 63;
+  prazo = Number(store.get('sj-demo-prazo'));
+  if (!(prazo > Date.now())) { prazo = Date.now() + (2 * 24 + 14) * 36e5 + 27 * 6e4; store.set('sj-demo-prazo', prazo); }
+  document.getElementById('demo-note').hidden = false;
 }
-if (PRAZO_INSCRICOES) {
-  const end = new Date(PRAZO_INSCRICOES).getTime(), box = document.getElementById('countdown');
-  const pad = n => String(n).padStart(2, '0');
+
+function renderCounter(bump) {
+  if (inscritos === null) return;
+  const n = Math.min(inscritos, LIMITE_BRINDE), rest = LIMITE_BRINDE - n;
+  document.getElementById('cnt-n').textContent = n;
+  document.getElementById('cnt-left').textContent = rest > 0 ? 'Restam ' + rest : 'Brindes esgotados';
+  document.getElementById('cnt-bar').style.width = (n / LIMITE_BRINDE * 100) + '%';
+  document.getElementById('counter').hidden = false;
+  if (bump) { const el = document.getElementById('cnt-n'); el.classList.remove('cnt-bump'); void el.offsetWidth; el.classList.add('cnt-bump'); }
+}
+renderCounter(false);
+
+// Na demonstração, de tempos em tempos entra mais um inscrito (até 97).
+if (MODO_DEMO) {
+  const next = () => setTimeout(() => {
+    if (inscritos < 97) { inscritos++; store.set('sj-demo-inscritos', inscritos); renderCounter(true); next(); }
+  }, 18000 + Math.random() * 22000);
+  next();
+}
+
+if (prazo) {
+  const box = document.getElementById('countdown');
   const tick = () => {
-    const ms = end - Date.now();
+    const ms = prazo - Date.now();
     if (!(ms > 0)) { box.hidden = true; return clearInterval(t); }
     document.getElementById('cd-d').textContent = Math.floor(ms / 864e5);
     document.getElementById('cd-h').textContent = pad(Math.floor(ms / 36e5) % 24);
@@ -238,6 +279,7 @@ document.getElementById('f').addEventListener('submit', async e=>{
   if(CRM_ENDPOINT){
     try{ await fetch(CRM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }catch(_){}
   }
+  if (inscritos !== null && MODO_DEMO) { inscritos++; store.set('sj-demo-inscritos', inscritos); renderCounter(true); }
   document.getElementById('fields').style.display='none';
   document.getElementById('ok').style.display='block';
 });
