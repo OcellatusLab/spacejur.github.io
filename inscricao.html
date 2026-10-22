@@ -51,6 +51,39 @@ button:hover{background:var(--gold2)}
 .why li span{color:var(--mute)}
 .again{display:block;width:100%;margin-top:24px;padding:16px;text-align:center;font:600 .72rem Montserrat;letter-spacing:.26em;text-transform:uppercase;background:transparent;color:var(--gold2);border:1px solid var(--gold);text-decoration:none}
 .again:hover{background:var(--gold);color:#0a0a0a}
+.hook{text-align:center;margin:14px auto 0;max-width:460px;font-size:.95rem;color:var(--mute)}
+.hook strong{display:block;font-weight:400;font-size:1.15rem;color:var(--gold2);letter-spacing:.04em;margin-bottom:6px}
+.prof-big{margin:0 0 30px;border:1px solid var(--line);background:var(--panel)}
+.prof-big .top{display:flex;gap:18px;align-items:center;padding:20px}
+.prof-big img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex:none}
+.prof-big small{display:block;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.prof-big b{display:block;font-weight:400;font-size:.95rem;letter-spacing:.16em;text-transform:uppercase;margin:2px 0}
+.prof-big .top span{display:block;font-size:.8rem;color:var(--mute);line-height:1.5}
+.prof-big .top a{color:var(--gold2);text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.stats div{padding:14px 8px;text-align:center;border-left:1px solid var(--line)}
+.stats div:first-child{border-left:0}
+.stats b{display:block;font-weight:300;font-size:1.35rem;color:var(--gold2);letter-spacing:.02em}
+.stats span{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);line-height:1.5}
+.sec{margin-top:40px}
+.sec h2{text-align:center;font-weight:400;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.sec .t{text-align:center;font-weight:300;font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;line-height:1.6}
+.sec p{color:var(--mute);font-size:.9rem;margin-bottom:12px}
+blockquote{margin:0;padding:22px 24px;border-left:2px solid var(--gold);background:var(--panel);font-size:.95rem;font-style:italic;color:var(--ink)}
+blockquote em{font-style:italic;color:var(--gold2)}
+blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.bar{display:flex;height:34px;margin:16px 0 8px;font-size:.66rem;font-weight:600;letter-spacing:.1em}
+.bar div{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--bg)}
+.bar .pc{flex:5;background:var(--gold);color:#0a0a0a}
+.bar .q{flex:1.25;background:#2a2418;color:var(--ink)}
+.legend{display:flex;justify-content:space-between;gap:10px;font-size:.7rem;color:var(--mute);flex-wrap:wrap}
+.pecas{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
+.pecas span{border:1px solid var(--line);padding:6px 10px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.method{display:grid;gap:12px}
+.method div{border:1px solid var(--line);background:var(--panel);padding:18px 20px}
+.method small{display:block;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.method b{display:block;font-weight:400;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;margin:4px 0 6px}
+.method span{display:block;font-size:.85rem;color:var(--mute)}
 </style>
 </head>
 <body>
@@ -59,6 +92,7 @@ button:hover{background:var(--gold2)}
   <a href="./" aria-label="Voltar ao site"><img class="logo" src="logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
   <div class="eyebrow">Inscrições abertas</div>
   <h1>Preparatório OAB</h1>
+  <p class="hook"><strong>Ele acertou a peça da OAB. De novo.</strong>Na última prova, a peça da 2ª fase caiu exatamente como o Prof. Hamilton Junior tinha preparado os alunos.</p>
 
   <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Depois do 100º inscrito, o brinde acaba. Turmas presenciais, com vagas limitadas.</span><span class="left" id="left" hidden></span></div>
 
@@ -67,9 +101,16 @@ button:hover{background:var(--gold2)}
     <div class="timer" aria-live="off"><div><b id="cd-d">0</b><small>dias</small></div><div><b id="cd-h">00</b><small>horas</small></div><div><b id="cd-m">00</b><small>min</small></div><div><b id="cd-s">00</b><small>seg</small></div></div>
   </div>
 
-  <div class="prof">
-    <img src="prof-hamilton.jpg" alt="Prof. Hamilton" width="400" height="400">
-    <div><small>Seu professor</small><b>Prof. Hamilton</b><span>Coordenador do Preparatório OAB. [mini-currículo]</span></div>
+  <div class="prof-big">
+    <div class="top">
+      <img src="prof-hamilton.jpg" alt="Prof. Hamilton Junior" width="520" height="520">
+      <div><small>2ª fase · Direito do Trabalho</small><b>Prof. Hamilton Junior</b><span>Autor de 9 livros jurídicos · <a href="https://linktr.ee/prof.hamiltonjr" target="_blank" rel="noopener">@prof.hamiltonjr</a></span></div>
+    </div>
+    <div class="stats">
+      <div><b>20</b><span>anos de prática trabalhista</span></div>
+      <div><b>9</b><span>livros jurídicos publicados</span></div>
+      <div><b>13,3 mil</b><span>seguidores no Instagram</span></div>
+    </div>
   </div>
 
   <form id="f">
@@ -108,11 +149,36 @@ button:hover{background:var(--gold2)}
     </div>
     <div class="ok" id="ok"><b>Inscrição recebida</b>Em breve entraremos em contato pelo WhatsApp.</div>
   </form>
+  <div class="sec">
+    <h2>Nas palavras dele</h2>
+    <blockquote>“Mais uma vez <em>eu acertei a peça da segunda fase da OAB</em>. Mais uma vez eu preparei muito bem meus alunos. […] Te espero na próxima turma da OAB, para você ter todos esses benefícios que os meus alunos dessa prova tiveram.”<footer>Prof. Hamilton Junior, logo após a prova</footer></blockquote>
+  </div>
+
+  <div class="sec">
+    <h2>A prova</h2>
+    <div class="t">Metade da sua nota está na peça</div>
+    <p>Na 2ª fase, a peça prático-profissional vale 5 dos 10 pontos. Acertar qual peça a banca vai pedir, e saber redigi-la, decide a aprovação. É aí que o professor concentra a preparação.</p>
+    <div class="bar" role="img" aria-label="Composição da nota da 2ª fase: peça vale 5 pontos e 4 questões discursivas valem 1,25 ponto cada"><div class="pc">PEÇA · 5,0</div><div class="q">1,25</div><div class="q">1,25</div><div class="q">1,25</div><div class="q">1,25</div></div>
+    <div class="legend"><span>Peça + 4 questões discursivas</span><span>Nota mínima para aprovação: 6,0</span></div>
+    <div class="pecas"><span>Reclamação Trabalhista</span><span>Contestação</span><span>Recurso Ordinário</span><span>Recurso de Revista</span><span>Embargos de Declaração</span><span>Agravo de Petição</span><span>Mandado de Segurança</span></div>
+  </div>
+
+  <div class="sec">
+    <h2>O método</h2>
+    <div class="t">Como a turma é preparada</div>
+    <div class="method">
+      <div><small>Antecipação</small><b>A peça provável</b><span>Leitura do histórico da banca e das tendências da área para indicar a peça com maior chance de cair.</span></div>
+      <div><small>Prática</small><b>Redação de verdade</b><span>Estrutura, endereçamento, fundamentos da CLT e súmulas do TST, com treino das peças trabalhistas que a banca costuma cobrar.</span></div>
+      <div><small>Segurança</small><b>Questões discursivas</b><span>Resposta objetiva e bem fundamentada para garantir os 5 pontos restantes sem perder tempo na prova.</span></div>
+    </div>
+  </div>
+
   <div class="why">
     <h2>Por que garantir agora</h2>
     <ul>
       <li><div>Vade Mecum de brinde <span>só para os 100 primeiros inscritos. Depois disso, não tem mais.</span></div></li>
       <li><div>Turmas presenciais <span>com vagas limitadas pela capacidade das salas.</span></div></li>
+      <li><div>Próxima turma com o Prof. Hamilton Junior <span>com quem preparou os alunos para a peça que caiu.</span></div></li>
       <li><div>Início das aulas em [data] <span>e quem entra antes começa a preparação antes.</span></div></li>
     </ul>
     <a href="#f" class="again">Quero meu Vade Mecum</a>
