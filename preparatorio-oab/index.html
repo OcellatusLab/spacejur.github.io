@@ -7,7 +7,7 @@
 <meta name="description" content="Inscreva-se no Preparatório OAB da SpaceJur. Os 100 primeiros inscritos ganham um Vade Mecum.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=202610220338">
+<link rel="stylesheet" href="../assets/style.css">
 <style>
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start;padding-block:70px}
 @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px}}
@@ -35,7 +35,7 @@ details p{color:var(--mute);margin-top:12px;font-size:.92rem}
 
 <header>
   <div class="wrap nav">
-    <a href="../"><img class="logo" src="../assets/logo.jpg?v=202610220338" alt="SpaceJur — Hub Jurídico"></a>
+    <a href="../"><img class="logo" src="../assets/logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
     <a href="#inscricao" class="btn solid">Inscrever-se</a>
   </div>
 </header>
@@ -45,7 +45,7 @@ details p{color:var(--mute);margin-top:12px;font-size:.92rem}
     <div>
       <div class="eyebrow">Inscrições abertas</div>
       <h1>Preparatório <span>OAB</span></h1>
-      <p class="lead">Da 1ª fase à 2ª fase. Preparação com estratégia, em uma estrutura moderna, com acompanhamento de quem conhece a prova.</p>
+      <p class="lead">Da 1ª fase à aprovação. Preparação com estratégia, em uma estrutura moderna, com acompanhamento de quem conhece a prova.</p>
       <div class="gift"><b>Os 100 primeiros inscritos ganham um Vade Mecum</b><span>Garanta o seu preenchendo o formulário ao lado.</span></div>
       <div class="mini">
         <div>Início das aulas<b>[data]</b></div>
@@ -85,9 +85,8 @@ details p{color:var(--mute);margin-top:12px;font-size:.92rem}
           <option>Ainda não sei</option>
         </select>
 
-        <label class="check"><input type="checkbox" name="consentimento_lgpd" value="sim" required> Autorizo o contato por WhatsApp e e-mail e o uso dos meus dados para esta inscrição, conforme a LGPD.</label>
+        <label class="check"><input type="checkbox" required> Autorizo o contato por WhatsApp e e-mail e o uso dos meus dados para esta inscrição, conforme a LGPD.</label>
         <button class="btn solid" type="submit">Quero minha vaga</button>
-        <p class="form-msg" id="form-msg" role="alert"></p>
       </div>
       <div class="ok" id="ok"><b>Inscrição recebida</b>Em breve entraremos em contato pelo WhatsApp.</div>
     </form>
@@ -127,7 +126,7 @@ details p{color:var(--mute);margin-top:12px;font-size:.92rem}
     <div class="eyebrow">Dúvidas</div>
     <h2>Perguntas <b>frequentes</b></h2>
     <details><summary>Quando começam as aulas?</summary><p>[Data de início a confirmar.]</p></details>
-    <details><summary>Onde são as aulas?</summary><p>Presenciais, na SpaceJur, no Manauara Shopping.</p></details>
+    <details><summary>Onde são as aulas?</summary><p>Presenciais, no Manauara Shopping, em salas climatizadas e equipadas.</p></details>
     <details><summary>Como funciona o Vade Mecum?</summary><p>Os 100 primeiros inscritos no preparatório ganham um Vade Mecum.</p></details>
     <details><summary>Posso entrar só na 2ª fase?</summary><p>Sim. No formulário, escolha a fase em que você quer se preparar.</p></details>
   </div>
@@ -142,7 +141,7 @@ details p{color:var(--mute);margin-top:12px;font-size:.92rem}
 
 <footer>
   <div class="wrap row">
-    <a href="../"><img class="logo" src="../assets/logo.jpg?v=202610220338" alt="SpaceJur"></a>
+    <a href="../"><img class="logo" src="../assets/logo.jpg" alt="SpaceJur"></a>
     <div>Conhecimento que impulsiona sua carreira.</div>
     <div>© 2026 SpaceJur</div>
   </div>
@@ -154,19 +153,8 @@ const CRM_ENDPOINT = "";
 document.getElementById('inscricao').addEventListener('submit', async e=>{
   e.preventDefault();
   const data = Object.fromEntries(new FormData(e.target));
-  data.enviado_em = new Date().toISOString();
-  const btn = e.target.querySelector('button[type=submit]'), msg = document.getElementById('form-msg');
-  msg.textContent = '';
   if(CRM_ENDPOINT){
-    btn.disabled = true;
-    try{
-      const res = await fetch(CRM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-      if(!res.ok) throw new Error('HTTP '+res.status);
-    }catch(_){
-      msg.textContent = 'Não foi possível enviar agora. Tente novamente em instantes.';
-      btn.disabled = false;
-      return;
-    }
+    try{ await fetch(CRM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }catch(_){}
   }
   document.getElementById('fields').style.display='none';
   document.getElementById('ok').style.display='block';
