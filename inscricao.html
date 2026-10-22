@@ -109,6 +109,7 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
 .cnt-bump{animation:bump .6s ease}
 @keyframes bump{50%{transform:scale(1.25)}}
 .demo-note{text-align:center;margin-top:8px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#6d675c}
+.form-err{min-height:1em;margin-top:10px;text-align:center;font-size:.8rem;color:#f0a091}
 </style>
 </head>
 <body>
@@ -176,8 +177,9 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
         <option>Ainda não sei</option>
       </select>
 
-      <label class="check"><input type="checkbox" required> Autorizo o contato por WhatsApp e e-mail e o uso dos meus dados para esta inscrição, conforme a LGPD.</label>
+      <label class="check"><input type="checkbox" name="consentimento_lgpd" value="sim" required> Autorizo o contato por WhatsApp e e-mail e o uso dos meus dados para esta inscrição, conforme a LGPD.</label>
       <button type="submit">Garantir minha vaga agora</button>
+      <p class="form-err" id="form-err" role="alert"></p>
       <p class="hint">Leva menos de 1 minuto.</p>
     </div>
     <div class="ok" id="ok"><b>Inscrição recebida</b>Em breve entraremos em contato pelo WhatsApp.</div>
@@ -219,8 +221,10 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
   <div class="foot">Conhecimento que impulsiona sua carreira</div>
 </div>
 <script>
-// Troque pelo endpoint do CRM (POST JSON). Sem endpoint, só simula o envio.
-const CRM_ENDPOINT = "";
+// CRM: HubSpot (gratuito). Cole aqui o Portal ID e o ID do formulário criado no HubSpot.
+// Vazios = o envio é só simulado.
+const HUBSPOT_PORTAL_ID = "";
+const HUBSPOT_FORM_ID = "";
 // MVP: true usa valores de demonstração no contador e no temporizador.
 // Para ir ao ar, troque para false e preencha PRAZO_INSCRICOES e INSCRITOS com dados reais.
 const MODO_DEMO = true;
@@ -273,11 +277,38 @@ if (prazo) {
   };
   const t = setInterval(tick, 1000); tick();
 }
+function enviarHubSpot(d) {
+  const partes = d.nome.trim().split(/\s+/);
+  const body = {
+    fields: [
+      { name: 'firstname', value: partes[0] },
+      { name: 'email', value: d.email },
+      { name: 'phone', value: d.whatsapp },
+      { name: 'message', value: 'Situação: ' + d.situacao + ' | Fase de interesse: ' + d.fase + ' | Origem: inscrição Preparatório OAB' }
+    ].concat(partes.length > 1 ? [{ name: 'lastname', value: partes.slice(1).join(' ') }] : []),
+    context: { pageUri: location.href, pageName: document.title },
+    legalConsentOptions: { consent: { consentToProcess: true, text: document.querySelector('.check').textContent.trim() } }
+  };
+  return fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HUBSPOT_PORTAL_ID + '/' + HUBSPOT_FORM_ID, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+  }).then(r => { if (!r.ok) throw new Error('HubSpot ' + r.status); });
+}
+
 document.getElementById('f').addEventListener('submit', async e=>{
   e.preventDefault();
   const data = Object.fromEntries(new FormData(e.target));
-  if(CRM_ENDPOINT){
-    try{ await fetch(CRM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }catch(_){}
+  const btn = e.target.querySelector('button[type=submit]'), err = document.getElementById('form-err');
+  err.textContent = '';
+  if (HUBSPOT_PORTAL_ID && HUBSPOT_FORM_ID) {
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    try { await enviarHubSpot(data); }
+    catch (_) {
+      err.textContent = 'Não foi possível enviar agora. Tente novamente em instantes.';
+      btn.disabled = false; btn.textContent = 'Garantir minha vaga agora';
+      return;
+    }
+  } else {
+    console.info('HubSpot não configurado: envio simulado.', data);
   }
   if (inscritos !== null && MODO_DEMO) { inscritos++; store.set('sj-demo-inscritos', inscritos); renderCounter(true); }
   document.getElementById('fields').style.display='none';
