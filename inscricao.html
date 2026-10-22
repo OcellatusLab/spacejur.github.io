@@ -286,7 +286,7 @@ function enviarHubSpot(d) {
     fields: [
       { name: 'firstname', value: partes[0] },
       { name: 'email', value: d.email },
-      { name: 'phone', value: d.whatsapp },
+      { name: 'mobilephone', value: d.whatsapp },
       { name: 'message', value: 'Situação: ' + d.situacao + ' | Fase de interesse: ' + d.fase + ' | Origem: inscrição Preparatório OAB' }
     ].concat(partes.length > 1 ? [{ name: 'lastname', value: partes.slice(1).join(' ') }] : []),
     context: { pageUri: location.href, pageName: document.title },
