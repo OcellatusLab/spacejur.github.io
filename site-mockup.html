@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpaceJur — Hub Jurídico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --bg2:#0c0b0a; --panel:#100f0d; --ink:#f3efe8; --mute:#a59f93;
+  --gold:#d9a441; --gold2:#f0c673; --line:#2a2418;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:Montserrat,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-weight:300}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.eyebrow{font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;font-weight:500}
+h2{font-weight:300;font-size:clamp(1.3rem,2.8vw,1.9rem);letter-spacing:.3em;text-transform:uppercase;line-height:1.6;margin-bottom:18px}
+h2 b{font-weight:400;color:var(--gold)}
+.lead{color:var(--mute);max-width:600px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 28px;font:500 .72rem Montserrat;letter-spacing:.26em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold2);background:transparent;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--gold);color:#0a0a0a}
+.btn.solid{background:var(--gold);color:#0a0a0a;font-weight:600}
+.btn.solid:hover{background:var(--gold2);border-color:var(--gold2)}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.logo{display:block;mix-blend-mode:screen}
+
+header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.nav .logo{height:36px}
+.menu{display:flex;gap:26px;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--mute)}
+.menu a:hover,.menu a.hl{color:var(--gold2)}
+.menu a.hl{border-bottom:1px solid var(--gold);padding-bottom:3px}
+@media(max-width:980px){.menu{display:none}}
+
+/* 1ª dobra */
+.hero{padding:0;background:
+  radial-gradient(700px 400px at 100% 0%,rgba(217,164,65,.22),transparent 70%),
+  radial-gradient(600px 420px at 0% 100%,rgba(217,164,65,.14),transparent 70%)}
+.hero .wrap{padding-block:80px;text-align:center}
+.hero .logo{width:min(720px,100%);margin:0 auto 40px}
+.hero h1{font-weight:300;font-size:clamp(.9rem,2vw,1.25rem);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);line-height:1.8}
+.hero h1 span{display:block;color:var(--ink)}
+.quick{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;text-align:left}
+@media(max-width:900px){.quick{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.quick{grid-template-columns:1fr}}
+.quick a{background:var(--panel);padding:28px 26px;transition:.2s;display:block}
+.quick a:hover{background:#17140d}
+.quick a small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500}
+.quick a b{display:block;font-weight:400;font-size:.9rem;letter-spacing:.18em;text-transform:uppercase}
+.quick a span{display:block;color:var(--mute);font-size:.82rem;margin-top:6px}
+.quick a.feat{background:linear-gradient(135deg,#1c1608,#100f0d);outline:1px solid var(--gold);outline-offset:-1px}
+
+/* OAB */
+.oab{background:var(--bg2);border-block:1px solid var(--line)}
+.tabs{display:flex;gap:0;margin:38px 0 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab{padding:16px 26px;font:500 .72rem Montserrat;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;margin-bottom:-1px}
+.tab.on{color:var(--gold2);border-color:var(--gold)}
+.pane{display:none;padding:36px 0 0}
+.pane.on{display:grid;grid-template-columns:1.2fr .8fr;gap:50px}
+@media(max-width:900px){.pane.on{grid-template-columns:1fr;gap:30px}}
+.pane h3{font-weight:400;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.pane p{color:var(--mute);margin-bottom:12px}
+.list{list-style:none;display:grid;gap:10px;margin:18px 0 26px;font-size:.95rem}
+.list li{display:flex;gap:14px}
+.list li::before{content:"";width:18px;height:1px;background:var(--gold);margin-top:13px;flex:none}
+.box{border:1px solid var(--line);background:var(--panel);padding:26px;align-self:start}
+.box small{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.box b{display:block;font-weight:300;font-size:1.5rem;letter-spacing:.08em;margin:8px 0 4px}
+.box span{color:var(--mute);font-size:.88rem}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.how div{background:var(--panel);padding:24px}
+.how i{font-style:normal;color:var(--gold);font-size:.7rem;letter-spacing:.3em}
+.how h4{font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin:8px 0}
+.how p{color:var(--mute);font-size:.88rem}
+
+/* cursos */
+.rail{display:flex;gap:18px;overflow-x:auto;padding:36px 0 10px;scroll-snap-type:x mandatory}
+.course{flex:none;width:260px;scroll-snap-align:start;border:1px solid var(--line);background:var(--panel);transition:.2s}
+.course:hover{border-color:var(--gold);transform:translateY(-4px)}
+.course .cover{height:150px;background:linear-gradient(135deg,#241c0c,#0c0b0a);display:grid;place-items:center;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.course .in{padding:18px}
+.course small{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.course b{display:block;font-weight:400;font-size:.9rem;margin:6px 0 2px}
+.course span{color:var(--mute);font-size:.82rem}
+.note{font-size:.8rem;color:var(--mute);margin-top:6px}
+
+/* eventos */
+.ev{background:var(--bg2);border-block:1px solid var(--line)}
+.filter{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 26px}
+.chip{padding:9px 18px;border:1px solid var(--line);background:none;color:var(--mute);font:500 .66rem Montserrat;letter-spacing:.22em;text-transform:uppercase;cursor:pointer}
+.chip.on{border-color:var(--gold);color:var(--gold2)}
+.evlist{display:grid;gap:12px}
+.event{display:grid;grid-template-columns:90px 1fr auto;gap:26px;align-items:center;border:1px solid var(--line);background:var(--panel);padding:20px 26px}
+@media(max-width:700px){.event{grid-template-columns:70px 1fr}.event .btn{grid-column:1/-1}}
+.event .d{text-align:center;border-right:1px solid var(--line);padding-right:20px}
+.event .d b{display:block;font-weight:200;font-size:2.1rem;color:var(--gold2);line-height:1}
+.event .d small{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.event h4{font-weight:400;font-size:.95rem;letter-spacing:.1em;text-transform:uppercase}
+.event p{color:var(--mute);font-size:.85rem}
+.empty{display:none;color:var(--mute);padding:20px 0}
+
+/* adv taon */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+@media(max-width:900px){.two{grid-template-columns:1fr;gap:36px}}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 30px}
+.tags span{border:1px solid var(--line);padding:8px 16px;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+
+/* hub */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.tile{background:var(--panel);padding:24px 18px;text-align:center;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.hub{background:var(--bg2);border-block:1px solid var(--line);text-align:center}
+.hub .lead{margin:0 auto}
+
+footer{padding:46px 0;border-top:1px solid var(--line);color:var(--mute);font-size:.8rem;letter-spacing:.08em}
+footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer .logo{height:34px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#"><img class="logo" src="logo.jpg" alt="SpaceJur — Hub Jurídico"></a>
+    <nav class="menu">
+      <a href="#oab" class="hl">Preparatório OAB</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#marketing">Marketing Jurídico</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#oab" class="btn solid" style="padding:11px 20px">Inscrever-se</a>
+  </div>
+</header>
+
+<!-- 1ª dobra -->
+<section class="hero">
+  <div class="wrap">
+    <img class="logo" src="logo.jpg" alt="SpaceJur — Hub Jurídico">
+    <h1>Mais que um hub.<span>Um universo em movimento.</span></h1>
+    <div class="quick">
+      <a href="#oab" class="feat"><small>Carro-chefe</small><b>Preparatório OAB</b><span>1ª fase, 2ª fase e mentoria</span></a>
+      <a href="#cursos"><small>Catálogo</small><b>Cursos</b><span>Extensão e prática</span></a>
+      <a href="#eventos"><small>Agenda</small><b>Eventos</b><span>Filtre por mês</span></a>
+      <a href="#marketing"><small>Negócios</small><b>Marketing Jurídico</b><span>ADV Taon</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Preparatório OAB -->
+<section class="oab" id="oab">
+  <div class="wrap">
+    <div class="eyebrow">Preparatório OAB</div>
+    <h2>Da 1ª fase à <b>aprovação.</b></h2>
+    <p class="lead">Escolha em que etapa do Exame de Ordem você está. O preparatório acompanha o calendário de cada exame.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-t="p1">1ª Fase</button>
+      <button class="tab" data-t="p2">2ª Fase</button>
+      <button class="tab" data-t="p3">Mentoria</button>
+    </div>
+
+    <div class="pane on" id="p1">
+      <div>
+        <h3>1ª Fase · prova objetiva</h3>
+        <p>Prova de múltipla escolha que cobre todas as disciplinas. Aqui o foco é revisão, questões e estratégia para bater a nota de corte.</p>
+        <ul class="list"><li>Aulas por disciplina</li><li>Resolução de questões e simulados</li><li>Plano de estudo até a data da prova</li></ul>
+        <a href="#" class="btn solid">Quero a 1ª fase</a>
+      </div>
+      <div class="box"><small>Próxima prova</small><b>[data]</b><span>Turma: [início]</span></div>
+    </div>
+
+    <div class="pane" id="p2">
+      <div>
+        <h3>2ª Fase · prova prático-profissional</h3>
+        <p>Você escolhe a área na inscrição do exame (Penal, Trabalhista, Tributário, entre outras). A prova tem questões discursivas e uma peça prática.</p>
+        <ul class="list"><li>Turmas por área de escolha</li><li>Treino de peças e correção</li><li>Revisão final antes da prova</li></ul>
+        <a href="#" class="btn solid">Quero a 2ª fase</a>
+      </div>
+      <div class="box"><small>Próxima prova</small><b>[data]</b><span>Turma: [início]</span></div>
+    </div>
+
+    <div class="pane" id="p3">
+      <div>
+        <h3>Mentoria</h3>
+        <p>Acompanhamento individual para quem quer direção: diagnóstico, metas e ajustes ao longo da preparação.</p>
+        <ul class="list"><li>Diagnóstico do seu momento</li><li>Encontros de acompanhamento</li><li>Feedback direto sobre desempenho</li></ul>
+        <a href="#" class="btn solid">Quero mentoria</a>
+      </div>
+      <div class="box"><small>Formato</small><b>[a definir]</b><span>Vagas limitadas</span></div>
+    </div>
+
+    <div class="how">
+      <div><i>01</i><h4>1ª fase</h4><p>Prova objetiva, com data própria.</p></div>
+      <div><i>02</i><h4>2ª fase</h4><p>Cerca de 15 a 20 dias depois. Prova prática na área escolhida.</p></div>
+      <div><i>03</i><h4>Repescagem</h4><p>Quem passa na 1ª e não passa na 2ª pode refazer a 2ª fase no exame seguinte.</p></div>
+      <div><i>04</i><h4>Ciclos</h4><p>O exame acontece várias vezes por ano, e o preparatório abre turmas a cada ciclo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cursos -->
+<section id="cursos">
+  <div class="wrap">
+    <div class="eyebrow">Cursos</div>
+    <h2>Extensão e <b>prática jurídica.</b></h2>
+    <p class="lead">Catálogo de cursos da SpaceJur, com acesso pela plataforma Abacursos.</p>
+    <div class="rail">
+      <a href="#" class="course"><div class="cover">Capa</div><div class="in"><small>Prática</small><b>[Nome do curso]</b><span>Prof. Cândido</span></div></a>
+      <a href="#" class="course"><div class="cover">Capa</div><div class="in"><small>Extensão</small><b>[Nome do curso]</b><span>Prof. Daniel</span></div></a>
+      <a href="#" class="course"><div class="cover">Capa</div><div class="in"><small>Prática</small><b>[Nome do curso]</b><span>[Professor]</span></div></a>
+      <a href="#" class="course"><div class="cover">Em breve</div><div class="in"><small>Extensão</small><b>[Nome do curso]</b><span>[Professor]</span></div></a>
+    </div>
+    <p class="note">Ao clicar, o aluno vai para a página do curso na Abacursos.</p>
+  </div>
+</section>
+
+<!-- Eventos -->
+<section class="ev" id="eventos">
+  <div class="wrap">
+    <div class="eyebrow">Eventos</div>
+    <h2>Agenda <b>SpaceJur.</b></h2>
+    <div class="filter" id="chips">
+      <button class="chip on" data-m="all">Todos</button>
+      <button class="chip" data-m="10">Outubro</button>
+      <button class="chip" data-m="11">Novembro</button>
+      <button class="chip" data-m="12">Dezembro</button>
+    </div>
+    <div class="evlist" id="evs">
+      <div class="event" data-m="10"><div class="d"><b>30</b><small>Out</small></div><div><h4>Lançamento da pedra fundamental</h4><p>Sexta · 19h · Manauara Shopping · 100 primeiros inscritos ganham um Vade Mecum</p></div><a href="inscricao.html" class="btn solid">Fazer inscrição</a></div>
+      <div class="event" data-m="11"><div class="d"><b>[dd]</b><small>Nov</small></div><div><h4>[Nome do evento]</h4><p>[Descrição curta]</p></div><a href="#" class="btn solid">Fazer inscrição</a></div>
+      <div class="event" data-m="12"><div class="d"><b>[dd]</b><small>Dez</small></div><div><h4>[Nome do evento]</h4><p>[Descrição curta]</p></div><a href="#" class="btn solid">Fazer inscrição</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Marketing jurídico -->
+<section id="marketing">
+  <div class="wrap two">
+    <div>
+      <div class="eyebrow">Marketing Jurídico</div>
+      <h2>ADV <b>Taon</b></h2>
+      <p class="lead">A agência de marketing digital do hub, voltada para advogados e escritórios.</p>
+      <div class="tags"><span>Site</span><span>Tráfego pago</span><span>Podcast</span><span>Entrevistas</span></div>
+      <a href="https://advtaon.com" target="_blank" rel="noopener" class="btn">Conhecer a ADV Taon</a>
+    </div>
+    <div class="box" style="padding:40px">
+      <small>Para quem</small>
+      <b style="font-size:1.1rem;line-height:1.6;letter-spacing:.06em">Do advogado que precisa de presença digital ao escritório que quer automação e comercial.</b>
+    </div>
+  </div>
+</section>
+
+<!-- Hub -->
+<section class="hub" id="sobre">
+  <div class="wrap">
+    <div class="eyebrow">Sobre</div>
+    <h2>Um hub, <b>não só um espaço.</b></h2>
+    <p class="lead">Formação, estrutura, conteúdo e oportunidades para estudantes, advogados e profissionais do Direito. Network, prática e negócios no mesmo lugar.</p>
+    <div class="tiles">
+      <div class="tile">Coworking jurídico</div>
+      <div class="tile">Podcast e estúdio fotográfico</div>
+      <div class="tile">Sala de reunião e pequenos eventos</div>
+      <div class="tile">Space Coffee</div>
+      <div class="tile">Biblioteca</div>
+      <div class="tile">Empreendedorismo jurídico</div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" style="text-align:center">
+  <div class="wrap">
+    <div class="eyebrow">Contato</div>
+    <h2>Vamos <b>conversar?</b></h2>
+    <p class="lead" style="margin:0 auto 28px">Peça sua consultoria gratuita ou tire dúvidas sobre o preparatório.</p>
+    <div class="btns" style="justify-content:center"><a href="#" class="btn solid">Consultoria gratuita</a><a href="#" class="btn">WhatsApp</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <a href="#"><img class="logo" src="logo.jpg" alt="SpaceJur"></a>
+    <div>Conhecimento que impulsiona sua carreira.</div>
+    <div>© 2026 SpaceJur</div>
+  </div>
+</footer>
+
+<script>
+// abas do preparatório
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab,.pane').forEach(e=>e.classList.remove('on'));
+  t.classList.add('on'); document.getElementById(t.dataset.t).classList.add('on');
+});
+// filtro de eventos por mês
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  document.querySelectorAll('.chip').forEach(e=>e.classList.remove('on')); c.classList.add('on');
+  document.querySelectorAll('#evs .event').forEach(ev=>ev.style.display=(c.dataset.m==='all'||ev.dataset.m===c.dataset.m)?'':'none');
+});
+</script>
+</body>
+</html>
