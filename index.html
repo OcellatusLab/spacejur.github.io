@@ -44,8 +44,8 @@ header{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.92);backdrop-filt
 .hero .logo{width:min(720px,100%);margin:0 auto 40px}
 .hero h1{font-weight:300;font-size:clamp(.9rem,2vw,1.25rem);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);line-height:1.8}
 .hero h1 span{display:block;color:var(--ink)}
-.quick{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;text-align:left}
-@media(max-width:900px){.quick{grid-template-columns:1fr 1fr}}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;text-align:left}
+@media(max-width:900px){.quick{grid-template-columns:1fr 1fr}.quick a:last-child{grid-column:1/-1}}
 @media(max-width:520px){.quick{grid-template-columns:1fr}}
 .quick a{background:var(--panel);padding:28px 26px;transition:.2s;display:block}
 .quick a:hover{background:#17140d}
@@ -143,7 +143,6 @@ footer .logo{height:34px}
     <img class="logo" src="logo.jpg" alt="SpaceJur — Hub Jurídico">
     <h1>Mais que um hub.<span>Um universo em movimento.</span></h1>
     <div class="quick">
-      <a href="#oab" class="feat"><small>Carro-chefe</small><b>Preparatório OAB</b><span>1ª fase, 2ª fase e mentoria</span></a>
       <a href="#cursos"><small>Catálogo</small><b>Cursos</b><span>Extensão e prática</span></a>
       <a href="#eventos"><small>Agenda</small><b>Eventos</b><span>Filtre por mês</span></a>
       <a href="#marketing"><small>Negócios</small><b>Marketing Jurídico</b><span>ADV Taon</span></a>
