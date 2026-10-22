@@ -233,7 +233,7 @@ const MODO_DEMO = true;
 // Data e hora em que as inscrições encerram, ex.: "2026-11-15T23:59:00-04:00".
 const PRAZO_INSCRICOES = "";
 // Quantas pessoas já se inscreveram (número real). null = contador oculto.
-const INSCRITOS = null;
+const INSCRITOS = 86;
 const LIMITE_BRINDE = 100;
 
 const pad = n => String(n).padStart(2, '0');
@@ -241,7 +241,6 @@ const store = { get(k){ try{ return localStorage.getItem(k); }catch(_){ return n
 
 let inscritos = INSCRITOS, prazo = PRAZO_INSCRICOES ? new Date(PRAZO_INSCRICOES).getTime() : null;
 if (MODO_DEMO) {
-  inscritos = Number(store.get('sj-demo-inscritos')) || 63;
   prazo = Number(store.get('sj-demo-prazo'));
   if (!(prazo > Date.now())) { prazo = Date.now() + (2 * 24 + 14) * 36e5 + 27 * 6e4; store.set('sj-demo-prazo', prazo); }
   document.getElementById('demo-note').hidden = false;
@@ -257,14 +256,6 @@ function renderCounter(bump) {
   if (bump) { const el = document.getElementById('cnt-n'); el.classList.remove('cnt-bump'); void el.offsetWidth; el.classList.add('cnt-bump'); }
 }
 renderCounter(false);
-
-// Na demonstração, de tempos em tempos entra mais um inscrito (até 97).
-if (MODO_DEMO) {
-  const next = () => setTimeout(() => {
-    if (inscritos < 97) { inscritos++; store.set('sj-demo-inscritos', inscritos); renderCounter(true); next(); }
-  }, 18000 + Math.random() * 22000);
-  next();
-}
 
 if (prazo) {
   const box = document.getElementById('countdown');
@@ -331,7 +322,6 @@ document.getElementById('f').addEventListener('submit', async e=>{
   } else {
     console.info('HubSpot não configurado: envio simulado.', data);
   }
-  if (inscritos !== null && MODO_DEMO) { inscritos++; store.set('sj-demo-inscritos', inscritos); renderCounter(true); }
   document.getElementById('fields').style.display='none';
   document.getElementById('ok').style.display='block';
 });
