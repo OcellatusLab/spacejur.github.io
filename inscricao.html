@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Inscrição — Preparatório OAB | SpaceJur</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Gloock&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#050505;--panel:#100f0d;--ink:#f3efe8;--mute:#a59f93;--gold:#d9a441;--gold2:#f0c673;--line:#2a2418}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -84,6 +84,19 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
 .method small{display:block;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
 .method b{display:block;font-weight:400;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;margin:4px 0 6px}
 .method span{display:block;font-size:.85rem;color:var(--mute)}
+.portrait{position:relative;width:min(300px,78%);margin:34px auto 26px}
+.portrait figure{margin:0;background:#fff;padding:10px 10px 44px;transform:rotate(1.8deg);box-shadow:0 24px 48px -18px rgba(0,0,0,.7)}
+.portrait img{display:block;width:100%;aspect-ratio:864/1000;object-fit:cover;object-position:50% 30%;filter:contrast(1.04) saturate(.92)}
+.portrait figcaption{position:absolute;left:20px;right:20px;bottom:12px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:clamp(8.5px,2.6vw,10.5px);letter-spacing:.06em;color:#4a5370;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
+.seal{position:absolute;left:-38px;bottom:60px;width:132px;height:132px;border-radius:50%;border:3px solid #c2242f;color:#c2242f;display:grid;place-items:center;text-align:center;transform:rotate(-14deg);background:rgba(255,255,255,.92);font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500;font-size:9.5px;letter-spacing:.14em;line-height:1.35;text-transform:uppercase;box-shadow:inset 0 0 0 5px rgba(255,255,255,.92),inset 0 0 0 6.5px #c2242f;animation:carimbo .55s cubic-bezier(.2,1.4,.4,1) .3s both}
+.seal b{display:block;font-family:Gloock,Georgia,serif;font-weight:400;font-size:26px;letter-spacing:0;line-height:1;margin:4px 0}
+@keyframes carimbo{from{transform:rotate(-14deg) scale(1.6);opacity:.2}to{transform:rotate(-14deg) scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.seal{animation:none}}
+.prof-big .portrait img{width:100%;height:auto;border-radius:0;border:0}
+.portrait figcaption span{white-space:nowrap}
+.prof-big .sub{text-align:center;padding:0 20px 18px;font-size:.8rem;color:var(--mute)}
+.prof-big .sub small{display:block;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:2px}
+.prof-big .sub a{color:var(--gold2);text-decoration:none}
 </style>
 </head>
 <body>
@@ -102,10 +115,14 @@ blockquote footer{margin-top:12px;font-style:normal;font-size:.68rem;letter-spac
   </div>
 
   <div class="prof-big">
-    <div class="top">
-      <img src="prof-hamilton.jpg" alt="Prof. Hamilton Junior" width="520" height="520">
-      <div><small>2ª fase · Direito do Trabalho</small><b>Prof. Hamilton Junior</b><span>Autor de 9 livros jurídicos · <a href="https://linktr.ee/prof.hamiltonjr" target="_blank" rel="noopener">@prof.hamiltonjr</a></span></div>
+    <div class="portrait">
+      <figure>
+        <img src="prof-hamilton.jpg" alt="Professor Hamilton Junior, de óculos e camiseta cinza, olhando para a câmera" width="864" height="1000">
+        <figcaption><span>Hamilton Junior</span><span>@prof.hamiltonjr</span></figcaption>
+      </figure>
+      <div class="seal" role="img" aria-label="Carimbo: 2ª fase OAB, peça acertada"><div>2ª fase OAB<b>Peça</b>acertada</div></div>
     </div>
+    <div class="sub"><small>2ª fase · Direito do Trabalho</small>Prof. Hamilton Junior · autor de 9 livros jurídicos · <a href="https://linktr.ee/prof.hamiltonjr" target="_blank" rel="noopener">@prof.hamiltonjr</a></div>
     <div class="stats">
       <div><b>20</b><span>anos de prática trabalhista</span></div>
       <div><b>9</b><span>livros jurídicos publicados</span></div>
