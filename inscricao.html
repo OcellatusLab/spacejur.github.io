@@ -282,18 +282,22 @@ if (prazo) {
 }
 async function enviarHubSpot(d) {
   const partes = d.nome.trim().split(/\s+/);
+  // Telefone no formato internacional (+55 DDD número), que o HubSpot reconhece.
+  const digitos = d.whatsapp.replace(/\D/g, '');
+  const tel = digitos.startsWith('55') && digitos.length > 11 ? '+' + digitos : '+55' + digitos;
   let fields = [
     { name: 'firstname', value: partes[0] },
     { name: 'email', value: d.email },
-    { name: 'mobilephone', value: d.whatsapp },
-    { name: 'message', value: 'Situação: ' + d.situacao + ' | Fase de interesse: ' + d.fase + ' | Origem: inscrição Preparatório OAB' }
+    { name: 'mobilephone', value: tel },
+    { name: 'phone', value: tel },
+    { name: 'message', value: 'WhatsApp: ' + d.whatsapp + ' | Situação: ' + d.situacao + ' | Fase de interesse: ' + d.fase + ' | Origem: inscrição Preparatório OAB' }
   ].concat(partes.length > 1 ? [{ name: 'lastname', value: partes.slice(1).join(' ') }] : []);
   let consent = { consent: { consentToProcess: true, text: document.querySelector('.check').textContent.trim() } };
   const url = 'https://api.hsforms.com/submissions/v3/integration/submit/' + HUBSPOT_PORTAL_ID + '/' + HUBSPOT_FORM_ID;
 
   // Se o formulário do HubSpot não tiver algum campo (ex.: Mensagem) ou não usar
   // consentimento LGPD, o HubSpot recusa o envio. Nesse caso tira o que foi recusado e tenta de novo.
-  for (let tentativa = 0; tentativa < 3; tentativa++) {
+  for (let tentativa = 0; tentativa < 4; tentativa++) {
     const body = { fields, context: { pageUri: location.href, pageName: document.title } };
     if (consent) body.legalConsentOptions = consent;
     const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -301,8 +305,9 @@ async function enviarHubSpot(d) {
     let erros = [];
     try { erros = (await r.json()).errors || []; } catch (_) {}
     console.warn('HubSpot recusou o envio (' + r.status + '):', erros);
-    const semCampo = erros.filter(e => /FIELD_NOT_IN_FORM_DEFINITION/.test(e.errorType || ''))
-      .map(e => ((e.message || '').match(/fields\.([\w]+)/) || [])[1]).filter(Boolean);
+    // Campos recusados (fora do formulário ou com valor inválido); o e-mail nunca é retirado.
+    const semCampo = erros.map(e => ((e.message || '').match(/fields\.([\w]+)/) || [])[1])
+      .filter(n => n && n !== 'email' && fields.some(f => f.name === n));
     const erroConsent = erros.some(e => /LEGAL|CONSENT/.test(e.errorType || ''));
     if (!semCampo.length && !(erroConsent && consent)) break;
     if (semCampo.length) fields = fields.filter(f => !semCampo.includes(f.name));
